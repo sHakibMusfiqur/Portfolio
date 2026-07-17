@@ -1,8 +1,13 @@
+import Link from "next/link";
+
 export default function Logo() {
   return (
-    <div className="text-2xl font-bold tracking-tight">
-      <span className="text-white">Musfiqur</span>{" "}
-      <span className="text-red-500">Shakib</span>
-    </div>
+    <Link
+      href="/"
+      className="select-none text-2xl font-extrabold tracking-tight"
+    >
+      <span className="text-slate-900">Musfiqur</span>
+      <span className="text-[#DC143C]">.</span>
+    </Link>
   );
 }
