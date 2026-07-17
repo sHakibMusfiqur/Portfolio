@@ -1,7 +1,13 @@
+import Section from "./components/ui/Section";
+
 export default function Home() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-black text-white">
-      <h1 className="text-5xl font-bold">Portfolio</h1>
-    </main>
+    <>
+      <Section>
+        <h1 className="text-center text-5xl font-bold">
+          Musfiqur Shakib
+        </h1>
+      </Section>
+    </>
   );
 }

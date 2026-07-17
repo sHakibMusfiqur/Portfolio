@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://yourportfolio.com"),
 
   title: {
-    default: "Musfiqur Shakib | Software Engineer",
+    default: "Musfiqur Shakib ",
     template: "%s | Musfiqur Shakib",
   },
 
