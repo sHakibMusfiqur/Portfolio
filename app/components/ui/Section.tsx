@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
+
+import { cn } from "@/lib/utils";
 import Container from "./Container";
-import { cn } from "../lib/utils";
 
 interface SectionProps {
   id?: string;

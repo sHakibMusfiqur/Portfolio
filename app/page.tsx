@@ -1,13 +1,21 @@
-import Section from "./components/ui/Section";
+import Section from "@/components/ui/Section";
+import Heading from "@/components/ui/Heading";
+import Button from "@/components/ui/Button";
 
 export default function Home() {
   return (
-    <>
+    <main>
       <Section>
-        <h1 className="text-center text-5xl font-bold">
-          Musfiqur Shakib
-        </h1>
+        <div className="flex flex-col items-center gap-8">
+          <Heading
+            subtitle="Software Engineer"
+            title="Musfiqur Shakib"
+            align="center"
+          />
+
+          <Button>View Projects</Button>
+        </div>
       </Section>
-    </>
+    </main>
   );
 }
