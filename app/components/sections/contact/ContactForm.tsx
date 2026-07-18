@@ -91,7 +91,7 @@ export default function ContactForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center gap-4 rounded-2xl border border-[var(--border-light)] bg-white py-12 text-center"
+        className="flex flex-col items-center gap-4 rounded-2xl border border-[var(--glass-border)] bg-[var(--surface-overlay)] py-12 text-center backdrop-blur-xl"
       >
         <div className="flex size-14 items-center justify-center rounded-full bg-[var(--primary-muted)]">
           <CheckCircle className="size-7 text-[var(--primary)]" strokeWidth={1.8} />
@@ -100,7 +100,7 @@ export default function ContactForm() {
           <p className="text-lg font-semibold text-[var(--foreground)]">
             Message sent!
           </p>
-          <p className="mt-1 text-sm text-[var(--muted)]">
+          <p className="mt-1.5 text-sm text-[var(--muted)]">
             Thanks for reaching out. I&apos;ll get back to you soon.
           </p>
         </div>
@@ -109,7 +109,7 @@ export default function ContactForm() {
             setStatus("idle");
             setForm({ name: "", email: "", subject: "", message: "" });
           }}
-          className="mt-2 text-sm font-semibold text-[var(--primary)] hover:text-[var(--primary-hover)]"
+          className="mt-2 text-sm font-semibold text-[var(--primary)] hover:text-[var(--primary-hover)] transition-colors duration-200"
         >
           Send another message
         </button>
@@ -167,9 +167,9 @@ export default function ContactForm() {
         type="submit"
         disabled={status === "loading"}
         className={cn(
-          "inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200",
+          "inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3.5 text-sm font-semibold transition-all duration-300",
           "bg-[var(--primary)] text-[var(--primary-foreground)]",
-          "hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-md)]",
+          "hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-glow)]",
           "active:scale-[0.97]",
           "disabled:pointer-events-none disabled:opacity-60"
         )}

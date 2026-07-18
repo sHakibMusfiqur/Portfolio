@@ -33,21 +33,21 @@ const stats = [
 export default function Biography() {
   return (
     <motion.div
-      variants={staggerContainer(0.06)}
+      variants={staggerContainer(0.08)}
       initial="hidden"
       whileInView="visible"
       viewport={viewport}
-      className="flex flex-col gap-10"
+      className="flex flex-col gap-12"
     >
       {/* Intro */}
-      <motion.div variants={fadeUp} className="space-y-4">
-        <p className="text-base leading-relaxed text-[var(--foreground-secondary)] sm:text-lg">
+      <motion.div variants={fadeUp} className="space-y-5">
+        <p className="text-base leading-relaxed text-[var(--foreground-secondary)] sm:text-lg lg:text-xl">
           I&apos;m a full-stack software engineer with a passion for building
           high-performance digital products. With experience spanning enterprise
           platforms, AI integrations, and cloud-native architectures, I bridge
           the gap between product vision and technical execution.
         </p>
-        <p className="text-base leading-relaxed text-[var(--foreground-secondary)] sm:text-lg">
+        <p className="text-base leading-relaxed text-[var(--foreground-secondary)] sm:text-lg lg:text-xl">
           I thrive at the intersection of clean code and meaningful user
           experiences — writing systems that are not only functional but
           maintainable and delightful to work with.
@@ -59,16 +59,16 @@ export default function Biography() {
         {highlights.map((item) => (
           <div
             key={item.label}
-            className="group flex flex-col gap-3 rounded-2xl border border-[var(--border-light)] bg-white p-5 transition-all duration-300 hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-sm)]"
+            className="group flex flex-col gap-4 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-6 transition-all duration-300 hover:border-[var(--glass-border-hover)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 backdrop-blur-xl"
           >
-            <div className="flex size-9 items-center justify-center rounded-xl bg-[var(--surface-sunken)] transition-colors duration-300 group-hover:bg-[var(--primary-muted)]">
-              <item.icon className="size-4 text-[var(--muted)] transition-colors duration-300 group-hover:text-[var(--primary)]" strokeWidth={2} />
+            <div className="flex size-10 items-center justify-center rounded-xl bg-[var(--surface-sunken)] transition-colors duration-300 group-hover:bg-[var(--primary-muted)]">
+              <item.icon className="size-5 text-[var(--muted)] transition-colors duration-300 group-hover:text-[var(--primary)]" strokeWidth={2} />
             </div>
             <div>
               <p className="text-sm font-semibold text-[var(--foreground)]">
                 {item.label}
               </p>
-              <p className="mt-1 text-sm leading-relaxed text-[var(--muted)]">
+              <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
                 {item.text}
               </p>
             </div>
@@ -84,7 +84,7 @@ export default function Biography() {
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="flex flex-col items-center gap-1 rounded-2xl border border-[var(--border-light)] bg-[var(--surface)] p-5 text-center"
+            className="flex flex-col items-center gap-1.5 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-6 text-center backdrop-blur-xl"
           >
             <p className="text-2xl font-bold tracking-tight text-[var(--foreground)] sm:text-3xl">
               {stat.value}
@@ -99,7 +99,7 @@ export default function Biography() {
       {/* Location */}
       <motion.div
         variants={fadeUp}
-        className="flex items-center gap-2 text-sm text-[var(--muted)]"
+        className="flex items-center gap-2.5 text-sm text-[var(--muted)]"
       >
         <MapPin className="size-4" strokeWidth={2} />
         <span>Based in Bangladesh &middot; Open to remote worldwide</span>

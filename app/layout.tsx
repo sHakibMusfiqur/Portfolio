@@ -111,9 +111,9 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 
   other: {
-    "theme-color": "#ffffff",
+    "theme-color": "#09090B",
     "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "default",
+    "apple-mobile-web-app-status-bar-style": "black-translucent",
     "apple-mobile-web-app-title": "Musfiqur Shakib",
   },
 };
@@ -133,7 +133,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="bg-background text-foreground antialiased">
+      <body className="bg-[var(--background)] text-[var(--foreground)] antialiased">
         {children}
       </body>
     </html>

@@ -19,15 +19,15 @@ const education = [
 export default function Education() {
   return (
     <motion.div
-      variants={staggerContainer(0.06)}
+      variants={staggerContainer(0.08)}
       initial="hidden"
       whileInView="visible"
       viewport={viewport}
-      className="flex flex-col gap-5"
+      className="flex flex-col gap-6"
     >
       <motion.div variants={fadeUp} className="flex items-center gap-3">
-        <div className="flex size-9 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
-          <GraduationCap className="size-4.5 text-[var(--primary)]" strokeWidth={2} />
+        <div className="flex size-10 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
+          <GraduationCap className="size-5 text-[var(--primary)]" strokeWidth={2} />
         </div>
         <h3 className="text-lg font-semibold text-[var(--foreground)]">
           Education
@@ -38,10 +38,10 @@ export default function Education() {
         <motion.div
           key={item.degree}
           variants={fadeUp}
-          className="group rounded-2xl border border-[var(--border-light)] bg-white p-6 transition-all duration-300 hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-sm)]"
+          className="group rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-6 transition-all duration-300 hover:border-[var(--glass-border-hover)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 backdrop-blur-xl"
         >
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-            <div className="space-y-1">
+            <div className="space-y-1.5">
               <p className="text-base font-semibold text-[var(--foreground)]">
                 {item.degree}
               </p>
@@ -55,7 +55,7 @@ export default function Education() {
             </div>
           </div>
 
-          <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
+          <p className="mt-4 text-sm leading-relaxed text-[var(--muted)]">
             {item.description}
           </p>
 
@@ -63,7 +63,7 @@ export default function Education() {
             {item.highlights.map((h) => (
               <span
                 key={h}
-                className="rounded-full border border-[var(--border-light)] bg-[var(--surface)] px-3 py-1 text-xs font-medium text-[var(--foreground-secondary)]"
+                className="rounded-full border border-[var(--glass-border)] bg-[var(--surface-overlay)] px-3 py-1 text-xs font-medium text-[var(--foreground-secondary)]"
               >
                 {h}
               </span>

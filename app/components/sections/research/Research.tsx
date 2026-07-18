@@ -53,7 +53,7 @@ const interests = [
     icon: Network,
     title: "Platform Engineering",
     description: "Developer experience, infrastructure automation, and observability.",
-    color: "#16a34a",
+    color: "#22c55e",
   },
 ];
 
@@ -108,7 +108,7 @@ const publications = [
 const typeConfig = {
   education: { color: "#8b5cf6", bg: "bg-purple-500/10" },
   research: { color: "#0ea5e9", bg: "bg-sky-500/10" },
-  publication: { color: "#16a34a", bg: "bg-emerald-500/10" },
+  publication: { color: "#22c55e", bg: "bg-emerald-500/10" },
 };
 
 /* ─── Component ─── */
@@ -118,11 +118,11 @@ export default function Research() {
     <Section id="research" aria-labelledby="research-heading" className="relative overflow-hidden bg-[var(--surface)]">
       {/* Background accent */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute -left-32 top-1/3 h-[400px] w-[400px] rounded-full bg-[var(--accent)]/[0.02] blur-3xl" />
-        <div className="absolute -right-24 bottom-1/4 h-[300px] w-[300px] rounded-full bg-[var(--primary)]/[0.02] blur-3xl" />
+        <div className="absolute -left-32 top-1/3 h-[400px] w-[400px] rounded-full bg-[var(--primary)]/[0.04] blur-[120px]" />
+        <div className="absolute -right-24 bottom-1/4 h-[300px] w-[300px] rounded-full bg-[var(--primary)]/[0.03] blur-[100px]" />
       </div>
 
-      <div className="relative z-10 flex flex-col gap-14">
+      <div className="relative z-10 flex flex-col gap-16">
         {/* Section header */}
         <motion.div
           variants={fadeUp}
@@ -132,7 +132,7 @@ export default function Research() {
           className="max-w-2xl"
         >
           <Heading id="research-heading" subtitle="Research" title="Academic work" />
-          <p className="mt-4 text-base text-[var(--muted)] sm:text-lg">
+          <p className="mt-5 text-base text-[var(--muted)] sm:text-lg lg:text-xl">
             My research explores the intersection of natural language processing
             and real-world applications — focusing on making AI more accessible
             for underrepresented languages.
@@ -146,15 +146,15 @@ export default function Research() {
           whileInView="visible"
           viewport={viewport}
         >
-          <div className="group relative overflow-hidden rounded-3xl border border-[var(--border-light)] bg-white p-8 transition-all duration-300 hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-lg)] sm:p-10">
+          <div className="group relative overflow-hidden rounded-3xl border border-[var(--glass-border)] bg-[var(--glass)] p-8 transition-all duration-300 hover:border-[var(--glass-border-hover)] hover:shadow-[var(--shadow-xl)] sm:p-10 backdrop-blur-xl">
             {/* Accent strip */}
             <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[var(--primary)] via-rose-500 to-pink-500" />
 
             <div className="flex flex-col gap-6 pl-2">
               {/* Label */}
               <div className="flex items-center gap-2.5">
-                <div className="flex size-9 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
-                  <GraduationCap className="size-4.5 text-[var(--primary)]" strokeWidth={2} />
+                <div className="flex size-10 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
+                  <GraduationCap className="size-5 text-[var(--primary)]" strokeWidth={2} />
                 </div>
                 <span className="text-sm font-semibold uppercase tracking-wider text-[var(--primary)]">
                   Thesis
@@ -183,7 +183,7 @@ export default function Research() {
                 {thesis.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-lg border border-[var(--border-light)] bg-[var(--surface)] px-3 py-1 text-xs font-medium text-[var(--foreground-secondary)]"
+                    className="rounded-lg border border-[var(--glass-border)] bg-[var(--surface-overlay)] px-3 py-1 text-xs font-medium text-[var(--foreground-secondary)]"
                   >
                     {tag}
                   </span>
@@ -199,11 +199,11 @@ export default function Research() {
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          className="flex flex-col gap-5"
+          className="flex flex-col gap-6"
         >
           <div className="flex items-center gap-3">
-            <div className="flex size-9 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
-              <Lightbulb className="size-4.5 text-[var(--primary)]" strokeWidth={2} />
+            <div className="flex size-10 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
+              <Lightbulb className="size-5 text-[var(--primary)]" strokeWidth={2} />
             </div>
             <h3 className="text-lg font-semibold text-[var(--foreground)]">
               Research Interests
@@ -214,11 +214,11 @@ export default function Research() {
             {interests.map((item) => (
               <div
                 key={item.title}
-                className="group flex items-start gap-4 rounded-2xl border border-[var(--border-light)] bg-white p-5 transition-all duration-300 hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-sm)]"
+                className="group flex items-start gap-4 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-5 transition-all duration-300 hover:border-[var(--glass-border-hover)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 backdrop-blur-xl"
               >
                 <div
                   className="flex size-10 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
-                  style={{ backgroundColor: `${item.color}10` }}
+                  style={{ backgroundColor: `${item.color}12` }}
                 >
                   <item.icon
                     className="size-5"
@@ -230,7 +230,7 @@ export default function Research() {
                   <p className="text-sm font-semibold text-[var(--foreground)]">
                     {item.title}
                   </p>
-                  <p className="mt-0.5 text-sm text-[var(--muted)]">
+                  <p className="mt-1 text-sm text-[var(--muted)]">
                     {item.description}
                   </p>
                 </div>
@@ -240,18 +240,18 @@ export default function Research() {
         </motion.div>
 
         {/* Two-column: Timeline + Publications */}
-        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
           {/* Timeline */}
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
-            className="flex flex-col gap-5"
+            className="flex flex-col gap-6"
           >
             <div className="flex items-center gap-3">
-              <div className="flex size-9 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
-                <Calendar className="size-4.5 text-[var(--primary)]" strokeWidth={2} />
+              <div className="flex size-10 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
+                <Calendar className="size-5 text-[var(--primary)]" strokeWidth={2} />
               </div>
               <h3 className="text-lg font-semibold text-[var(--foreground)]">
                 Timeline
@@ -260,7 +260,7 @@ export default function Research() {
 
             <div className="relative flex flex-col">
               {/* Timeline line */}
-              <div className="absolute left-[15px] top-3 bottom-3 w-px bg-[var(--border-light)]" />
+              <div className="absolute left-[15px] top-3 bottom-3 w-px bg-[var(--glass-border)]" />
 
               {timeline.map((item, i) => {
                 const cfg = typeConfig[item.type];
@@ -268,7 +268,7 @@ export default function Research() {
                   <div key={i} className="relative flex gap-4 py-4">
                     {/* Dot */}
                     <div
-                      className="relative z-10 mt-1.5 size-[9px] shrink-0 rounded-full border-2 bg-white"
+                      className="relative z-10 mt-1.5 size-[9px] shrink-0 rounded-full border-2 bg-[var(--background)]"
                       style={{ borderColor: cfg.color }}
                     />
 
@@ -287,10 +287,10 @@ export default function Research() {
                           {item.type}
                         </span>
                       </div>
-                      <p className="mt-1 text-sm font-semibold text-[var(--foreground)]">
+                      <p className="mt-1.5 text-sm font-semibold text-[var(--foreground)]">
                         {item.title}
                       </p>
-                      <p className="mt-0.5 text-sm text-[var(--muted)]">
+                      <p className="mt-1 text-sm text-[var(--muted)]">
                         {item.description}
                       </p>
                     </div>
@@ -306,11 +306,11 @@ export default function Research() {
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
-            className="flex flex-col gap-5"
+            className="flex flex-col gap-6"
           >
             <div className="flex items-center gap-3">
-              <div className="flex size-9 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
-                <BookOpen className="size-4.5 text-[var(--primary)]" strokeWidth={2} />
+              <div className="flex size-10 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
+                <BookOpen className="size-5 text-[var(--primary)]" strokeWidth={2} />
               </div>
               <h3 className="text-lg font-semibold text-[var(--foreground)]">
                 Publications
@@ -321,7 +321,7 @@ export default function Research() {
               {publications.map((pub, i) => (
                 <div
                   key={i}
-                  className="group rounded-2xl border border-[var(--border-light)] bg-white p-5 transition-all duration-300 hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-sm)]"
+                  className="group rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-5 transition-all duration-300 hover:border-[var(--glass-border-hover)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 backdrop-blur-xl"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-start gap-3">
@@ -342,8 +342,8 @@ export default function Research() {
                       className={cn(
                         "shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider",
                         pub.status === "Published"
-                          ? "bg-emerald-500/10 text-emerald-600"
-                          : "bg-amber-500/10 text-amber-600"
+                          ? "bg-emerald-500/10 text-emerald-400"
+                          : "bg-amber-500/10 text-amber-400"
                       )}
                     >
                       {pub.status}
@@ -353,7 +353,7 @@ export default function Research() {
               ))}
 
               {/* Placeholder card */}
-              <div className="flex items-center gap-3 rounded-2xl border border-dashed border-[var(--border)] bg-[var(--surface)]/50 p-5">
+              <div className="flex items-center gap-3 rounded-2xl border border-dashed border-[var(--glass-border)] bg-[var(--surface-overlay)]/50 p-5">
                 <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[var(--surface-sunken)]">
                   <FileText className="size-4 text-[var(--muted-light)]" strokeWidth={2} />
                 </div>

@@ -16,21 +16,21 @@ export default function Projects() {
     <Section id="projects" aria-labelledby="projects-heading" className="relative overflow-hidden">
       {/* Background accent */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute -right-40 top-1/4 h-[500px] w-[500px] rounded-full bg-[var(--primary)]/[0.02] blur-3xl" />
+        <div className="absolute -right-40 top-1/4 h-[500px] w-[500px] rounded-full bg-[var(--primary)]/[0.04] blur-[120px]" />
       </div>
 
-      <div className="relative z-10 flex flex-col gap-14">
+      <div className="relative z-10 flex flex-col gap-16">
         {/* Section header */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={viewport}
-          className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
+          className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
         >
           <div className="max-w-2xl">
             <Heading id="projects-heading" subtitle="Projects" title="Selected work" />
-            <p className="mt-4 text-base text-[var(--muted)] sm:text-lg">
+            <p className="mt-5 text-base text-[var(--muted)] sm:text-lg lg:text-xl">
               A selection of projects that showcase my approach to building
               scalable, user-focused software.
             </p>
@@ -38,18 +38,18 @@ export default function Projects() {
 
           <Link
             href="#"
-            className="group inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-[var(--primary)] transition-colors duration-200 hover:text-[var(--primary-hover)]"
+            className="group inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-[var(--primary)] transition-colors duration-300 hover:text-[var(--primary-hover)]"
           >
             View all projects
             <ArrowRight
-              className="size-4 transition-transform duration-200 group-hover:translate-x-0.5"
+              className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
               strokeWidth={2.5}
             />
           </Link>
         </motion.div>
 
         {/* Featured projects */}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-10">
           {FEATURED_PROJECTS.map((project, i) => (
             <FeaturedProject key={project.title} project={project} index={i} />
           ))}

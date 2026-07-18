@@ -72,22 +72,22 @@ export default function Navbar() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled ? "py-3" : "py-4"
+        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+        scrolled ? "py-3" : "py-5"
       )}
       role="banner"
     >
       <Container>
-        {/* ── Desktop Nav ── */}
+        {/* ── Desktop Nav — Floating Glass ── */}
         <nav
           id={desktopNavId}
           aria-label="Main navigation"
           className={cn(
-            "hidden items-center justify-between rounded-full border px-6 transition-all duration-300 lg:flex",
+            "hidden items-center justify-between rounded-full border px-6 transition-all duration-500 lg:flex",
             "h-14",
             scrolled
-              ? "border-[var(--border-light)] bg-white/80 shadow-[var(--shadow-lg)] backdrop-blur-xl"
-              : "border-transparent bg-white/50 shadow-none backdrop-blur-sm"
+              ? "border-[var(--glass-border)] bg-[var(--glass)] shadow-[var(--shadow-xl)] backdrop-blur-2xl"
+              : "border-[var(--glass-border)] bg-[rgba(18,18,24,0.6)] shadow-[var(--shadow-sm)] backdrop-blur-xl"
           )}
         >
           <Logo />
@@ -105,10 +105,10 @@ export default function Navbar() {
                     }}
                     aria-current={isActive ? "true" : undefined}
                     className={cn(
-                      "relative rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors duration-200",
+                      "relative rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors duration-300",
                       isActive
                         ? "text-[var(--foreground)]"
-                        : "text-[var(--muted)] hover:text-[var(--foreground)]"
+                        : "text-[var(--muted)] hover:text-[var(--foreground-secondary)]"
                     )}
                   >
                     {isActive && (
@@ -117,7 +117,7 @@ export default function Navbar() {
                         className="absolute inset-0 rounded-full bg-[var(--primary-muted)]"
                         transition={{
                           type: "spring",
-                          stiffness: 400,
+                          stiffness: 380,
                           damping: 30,
                         }}
                       />
@@ -134,9 +134,9 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-              "inline-flex items-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold transition-all duration-200",
+              "inline-flex items-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold transition-all duration-300",
               "bg-[var(--primary)] text-[var(--primary-foreground)]",
-              "hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-md)]",
+              "hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-glow-sm)]",
               "active:scale-[0.97]"
             )}
           >
@@ -155,11 +155,11 @@ export default function Navbar() {
             aria-controls={mobileNavId}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             className={cn(
-              "flex size-10 items-center justify-center rounded-full transition-all duration-200",
+              "flex size-10 items-center justify-center rounded-full border transition-all duration-300",
               scrolled
-                ? "border border-[var(--border-light)] bg-white/80 shadow-[var(--shadow-sm)] backdrop-blur-xl"
-                : "border border-transparent bg-white/50 backdrop-blur-sm",
-              mobileOpen && "!border-[var(--border)]"
+                ? "border-[var(--glass-border)] bg-[var(--glass)] shadow-[var(--shadow-md)] backdrop-blur-2xl"
+                : "border-[var(--glass-border)] bg-[rgba(18,18,24,0.6)] backdrop-blur-xl",
+              mobileOpen && "!border-[var(--glass-border-hover)]"
             )}
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -172,7 +172,7 @@ export default function Navbar() {
                   transition={{ duration: 0.15 }}
                   aria-hidden="true"
                 >
-                  <X className="size-4.5" strokeWidth={2} />
+                  <X className="size-4.5 text-[var(--foreground)]" strokeWidth={2} />
                 </motion.span>
               ) : (
                 <motion.span
@@ -183,7 +183,7 @@ export default function Navbar() {
                   transition={{ duration: 0.15 }}
                   aria-hidden="true"
                 >
-                  <Menu className="size-4.5" strokeWidth={2} />
+                  <Menu className="size-4.5 text-[var(--foreground)]" strokeWidth={2} />
                 </motion.span>
               )}
             </AnimatePresence>
@@ -200,7 +200,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-black/10 backdrop-blur-xs lg:hidden"
+              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
               onClick={() => setMobileOpen(false)}
               aria-hidden="true"
             />
@@ -212,10 +212,10 @@ export default function Navbar() {
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className={cn(
-                "fixed inset-x-0 top-[72px] z-50 mx-3 overflow-hidden rounded-2xl border lg:hidden",
-                "border-[var(--border-light)] bg-white/90 shadow-[var(--shadow-2xl)] backdrop-blur-xl"
+                "fixed inset-x-0 top-[76px] z-50 mx-3 overflow-hidden rounded-2xl border lg:hidden",
+                "border-[var(--glass-border)] bg-[var(--glass)] shadow-[var(--shadow-2xl)] backdrop-blur-2xl"
               )}
             >
               <div className="flex flex-col p-3" role="list">
@@ -241,10 +241,10 @@ export default function Navbar() {
                         }}
                         aria-current={isActive ? "page" : undefined}
                         className={cn(
-                          "flex items-center rounded-xl px-4 py-2.5 text-sm font-medium transition-colors duration-150",
+                          "flex items-center rounded-xl px-4 py-2.5 text-sm font-medium transition-colors duration-200",
                           isActive
                             ? "bg-[var(--primary-muted)] text-[var(--foreground)]"
-                            : "text-[var(--muted)] hover:bg-[var(--surface-sunken)] hover:text-[var(--foreground)]"
+                            : "text-[var(--muted)] hover:bg-[var(--glass-highlight)] hover:text-[var(--foreground-secondary)]"
                         )}
                       >
                         {link.label}
@@ -253,7 +253,7 @@ export default function Navbar() {
                   );
                 })}
 
-                <div className="my-1 h-px bg-[var(--border-light)]" aria-hidden="true" />
+                <div className="my-1 h-px bg-[var(--glass-border)]" aria-hidden="true" />
 
                 <motion.div
                   initial={{ opacity: 0, y: -4 }}
@@ -271,9 +271,9 @@ export default function Navbar() {
                     rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
                     className={cn(
-                      "flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200",
+                      "flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-300",
                       "bg-[var(--primary)] text-[var(--primary-foreground)]",
-                      "hover:bg-[var(--primary-hover)]",
+                      "hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-glow-sm)]",
                       "active:scale-[0.98]"
                     )}
                   >

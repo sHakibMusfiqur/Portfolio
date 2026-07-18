@@ -27,15 +27,15 @@ const experiences = [
 export default function ExperienceSummary() {
   return (
     <motion.div
-      variants={staggerContainer(0.06)}
+      variants={staggerContainer(0.08)}
       initial="hidden"
       whileInView="visible"
       viewport={viewport}
-      className="flex flex-col gap-5"
+      className="flex flex-col gap-6"
     >
       <motion.div variants={fadeUp} className="flex items-center gap-3">
-        <div className="flex size-9 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
-          <Briefcase className="size-4.5 text-[var(--primary)]" strokeWidth={2} />
+        <div className="flex size-10 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
+          <Briefcase className="size-5 text-[var(--primary)]" strokeWidth={2} />
         </div>
         <h3 className="text-lg font-semibold text-[var(--foreground)]">
           Experience
@@ -44,7 +44,7 @@ export default function ExperienceSummary() {
 
       <div className="relative flex flex-col gap-0">
         {/* Timeline line */}
-        <div className="absolute left-[17px] top-10 bottom-4 w-px bg-[var(--border-light)]" />
+        <div className="absolute left-[19px] top-10 bottom-4 w-px bg-[var(--glass-border)]" />
 
         {experiences.map((item) => (
           <motion.div
@@ -53,10 +53,10 @@ export default function ExperienceSummary() {
             className="group relative flex gap-4 py-4"
           >
             {/* Timeline dot */}
-            <div className="relative z-10 mt-1 flex size-[9px] shrink-0 rounded-full border-2 border-[var(--primary)] bg-white" />
+            <div className="relative z-10 mt-1.5 flex size-[9px] shrink-0 rounded-full border-2 border-[var(--primary)] bg-[var(--background)]" />
 
-            <div className="flex-1 rounded-2xl border border-[var(--border-light)] bg-white p-5 transition-all duration-300 hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-sm)]">
-              <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex-1 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-5 transition-all duration-300 hover:border-[var(--glass-border-hover)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 backdrop-blur-xl">
+              <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-base font-semibold text-[var(--foreground)]">
                     {item.role}
@@ -79,7 +79,7 @@ export default function ExperienceSummary() {
                 {item.technologies.map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-[var(--border-light)] bg-[var(--surface)] px-3 py-1 text-xs font-medium text-[var(--foreground-secondary)]"
+                    className="rounded-full border border-[var(--glass-border)] bg-[var(--surface-overlay)] px-3 py-1 text-xs font-medium text-[var(--foreground-secondary)]"
                   >
                     {t}
                   </span>

@@ -43,11 +43,11 @@ export default function Contact() {
     <Section id="contact" aria-labelledby="contact-heading" className="relative overflow-hidden">
       {/* Background accent */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute -right-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[var(--primary)]/[0.02] blur-3xl" />
-        <div className="absolute -left-24 top-1/3 h-[300px] w-[300px] rounded-full bg-[var(--accent)]/[0.02] blur-3xl" />
+        <div className="absolute -right-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[var(--primary)]/[0.04] blur-[120px]" />
+        <div className="absolute -left-24 top-1/3 h-[300px] w-[300px] rounded-full bg-[var(--primary)]/[0.03] blur-[100px]" />
       </div>
 
-      <div className="relative z-10 flex flex-col gap-14">
+      <div className="relative z-10 flex flex-col gap-16">
         {/* Section header */}
         <motion.div
           variants={fadeUp}
@@ -57,14 +57,14 @@ export default function Contact() {
           className="max-w-2xl"
         >
           <Heading id="contact-heading" subtitle="Contact" title="Get in touch" />
-          <p className="mt-4 text-base text-[var(--muted)] sm:text-lg">
+          <p className="mt-5 text-base text-[var(--muted)] sm:text-lg lg:text-xl">
             Have a project in mind, a question, or just want to connect?
             I&apos;d love to hear from you.
           </p>
         </motion.div>
 
         {/* Two-column layout */}
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           {/* Left — Info */}
           <motion.div
             variants={fadeUp}
@@ -78,7 +78,7 @@ export default function Contact() {
               {infoItems.map((item) => (
                 <div
                   key={item.label}
-                  className="flex items-start gap-4 rounded-2xl border border-[var(--border-light)] bg-white p-5 transition-all duration-300 hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-sm)]"
+                  className="flex items-start gap-4 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-5 transition-all duration-300 hover:border-[var(--glass-border-hover)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 backdrop-blur-xl"
                 >
                   <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[var(--surface-sunken)]">
                     <item.icon
@@ -93,12 +93,12 @@ export default function Contact() {
                     {item.href ? (
                       <Link
                         href={item.href}
-                        className="mt-0.5 text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)]"
+                        className="mt-1 text-sm font-medium text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200"
                       >
                         {item.value}
                       </Link>
                     ) : (
-                      <p className="mt-0.5 text-sm font-medium text-[var(--foreground)]">
+                      <p className="mt-1 text-sm font-medium text-[var(--foreground)]">
                         {item.value}
                       </p>
                     )}
@@ -119,7 +119,7 @@ export default function Contact() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center gap-3 rounded-xl border border-[var(--border-light)] bg-white p-4 transition-all duration-300 hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-sm)]"
+                    className="group flex items-center gap-3 rounded-xl border border-[var(--glass-border)] bg-[var(--glass)] p-4 transition-all duration-300 hover:border-[var(--glass-border-hover)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5 backdrop-blur-xl"
                   >
                     <div className="flex size-9 items-center justify-center rounded-lg bg-[var(--surface-sunken)] transition-colors duration-300 group-hover:bg-[var(--primary-muted)]">
                       <link.icon
@@ -132,7 +132,7 @@ export default function Contact() {
                         {link.label}
                       </span>
                       <ArrowUpRight
-                        className="size-3 text-[var(--muted-light)] transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--primary)]"
+                        className="size-3 text-[var(--muted-light)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--primary)]"
                         strokeWidth={2}
                       />
                     </div>
@@ -147,8 +147,8 @@ export default function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                "group flex items-center gap-4 rounded-2xl border border-[var(--border-light)] bg-[var(--surface)] p-5 transition-all duration-300",
-                "hover:border-[var(--primary)]/20 hover:bg-[var(--primary-muted)] hover:shadow-[var(--shadow-sm)]"
+                "group flex items-center gap-4 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-5 transition-all duration-300 backdrop-blur-xl",
+                "hover:border-[var(--primary)]/20 hover:bg-[var(--primary-muted)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5"
               )}
             >
               <div className="flex size-12 items-center justify-center rounded-xl bg-[var(--primary-muted)] transition-colors duration-300 group-hover:bg-[var(--primary)]">
@@ -166,7 +166,7 @@ export default function Contact() {
                 </p>
               </div>
               <ArrowUpRight
-                className="ml-auto size-4 text-[var(--muted-light)] transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--primary)]"
+                className="ml-auto size-4 text-[var(--muted-light)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--primary)]"
                 strokeWidth={2}
               />
             </Link>
@@ -179,12 +179,12 @@ export default function Contact() {
             whileInView="visible"
             viewport={viewport}
           >
-            <div className="rounded-3xl border border-[var(--border-light)] bg-white p-7 shadow-[var(--shadow-xs)] sm:p-8">
+            <div className="rounded-3xl border border-[var(--glass-border)] bg-[var(--glass)] p-7 shadow-[var(--shadow-sm)] sm:p-8 backdrop-blur-xl">
               <div className="mb-6">
                 <h3 className="text-lg font-semibold text-[var(--foreground)]">
                   Send a message
                 </h3>
-                <p className="mt-1 text-sm text-[var(--muted)]">
+                <p className="mt-1.5 text-sm text-[var(--muted)]">
                   Fill out the form and I&apos;ll get back to you as soon as
                   possible.
                 </p>

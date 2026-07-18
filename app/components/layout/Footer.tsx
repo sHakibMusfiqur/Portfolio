@@ -26,19 +26,19 @@ export default function Footer() {
   return (
     <footer
       role="contentinfo"
-      className="relative border-t border-[var(--border-light)] bg-[var(--surface)]"
+      className="relative border-t border-[var(--glass-border)] bg-[var(--surface)]"
     >
       <Container>
-        <div className="flex flex-col gap-10 py-12 sm:py-16">
+        <div className="flex flex-col gap-12 py-14 sm:py-18">
           {/* Top row */}
-          <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
+          <div className="flex flex-col gap-12 sm:flex-row sm:items-start sm:justify-between sm:gap-8">
             {/* Logo + tagline */}
             <motion.div
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={viewport}
-              className="flex max-w-sm flex-col gap-3"
+              className="flex max-w-sm flex-col gap-4"
             >
               <Logo />
               <p className="text-sm leading-relaxed text-[var(--muted)]">
@@ -48,24 +48,24 @@ export default function Footer() {
             </motion.div>
 
             {/* Navigation + Socials */}
-            <div className="flex gap-12 sm:gap-16">
+            <div className="flex gap-14 sm:gap-18">
               {/* Nav links */}
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewport}
-                className="flex flex-col gap-3"
+                className="flex flex-col gap-4"
               >
                 <p className="text-xs font-semibold uppercase tracking-wider text-[var(--foreground-secondary)]">
                   Navigation
                 </p>
-                <ul className="flex flex-col gap-2">
+                <ul className="flex flex-col gap-2.5">
                   {NAV_LINKS.map((link) => (
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="text-sm text-[var(--muted)] transition-colors duration-200 hover:text-[var(--foreground)]"
+                        className="text-sm text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
                       >
                         {link.label}
                       </Link>
@@ -80,12 +80,12 @@ export default function Footer() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewport}
-                className="flex flex-col gap-3"
+                className="flex flex-col gap-4"
               >
                 <p className="text-xs font-semibold uppercase tracking-wider text-[var(--foreground-secondary)]">
                   Connect
                 </p>
-                <ul className="flex flex-col gap-2">
+                <ul className="flex flex-col gap-2.5">
                   {socials.map((link) => (
                     <li key={link.label}>
                       <Link
@@ -93,7 +93,7 @@ export default function Footer() {
                         target={link.href.startsWith("http") ? "_blank" : undefined}
                         rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                         aria-label={link.label}
-                        className="group flex items-center gap-1.5 text-sm text-[var(--muted)] transition-colors duration-200 hover:text-[var(--foreground)]"
+                        className="text-sm text-[var(--muted)] transition-colors duration-300 hover:text-[var(--foreground)]"
                       >
                         {link.label}
                       </Link>
@@ -105,7 +105,7 @@ export default function Footer() {
           </div>
 
           {/* Divider */}
-          <div className="h-px bg-[var(--border-light)]" />
+          <div className="h-px bg-[var(--glass-border)]" />
 
           {/* Bottom row */}
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
@@ -118,13 +118,13 @@ export default function Footer() {
               aria-label="Back to top"
               className={cn(
                 "group flex items-center gap-2 text-xs font-medium text-[var(--muted)]",
-                "transition-colors duration-200 hover:text-[var(--foreground)]"
+                "transition-colors duration-300 hover:text-[var(--foreground)]"
               )}
             >
               Back to top
-                <span className="flex size-7 items-center justify-center rounded-full border border-[var(--border)] bg-white transition-all duration-200 group-hover:border-[var(--primary)] group-hover:bg-[var(--primary-muted)]">
+              <span className="flex size-7 items-center justify-center rounded-full border border-[var(--glass-border)] bg-[var(--surface-overlay)] transition-all duration-300 group-hover:border-[var(--primary)] group-hover:bg-[var(--primary-muted)]">
                 <ArrowUp
-                  className="size-3.5 text-[var(--muted)] transition-colors duration-200 group-hover:text-[var(--primary)]"
+                  className="size-3.5 text-[var(--muted)] transition-colors duration-300 group-hover:text-[var(--primary)]"
                   strokeWidth={2.5}
                   aria-hidden="true"
                 />

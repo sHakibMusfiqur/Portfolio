@@ -16,26 +16,26 @@ export default function SkillCard({ category, index }: SkillCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={viewport}
       transition={{
-        duration: 0.45,
-        delay: index * 0.06,
+        duration: 0.5,
+        delay: index * 0.08,
         ease: [0.16, 1, 0.3, 1] as const,
       }}
       className="group"
     >
       <div
         className={cn(
-          "relative flex h-full flex-col gap-5 rounded-2xl border border-[var(--border-light)] bg-white p-6",
+          "relative flex h-full flex-col gap-5 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-6 backdrop-blur-xl",
           "transition-all duration-300",
-          "hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-lg)]"
+          "hover:border-[var(--glass-border-hover)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5"
         )}
       >
         {/* Glow on hover */}
         <div
-          className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           style={{
             background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${category.color}08, transparent 40%)`,
           }}
@@ -46,7 +46,7 @@ export default function SkillCard({ category, index }: SkillCardProps) {
           <div
             className="flex size-10 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
             style={{
-              backgroundColor: `${category.color}10`,
+              backgroundColor: `${category.color}12`,
             }}
           >
             <Icon
@@ -71,10 +71,10 @@ export default function SkillCard({ category, index }: SkillCardProps) {
             <span
               key={skill.name}
               className={cn(
-                "rounded-lg border border-[var(--border-light)] bg-[var(--surface)] px-3 py-1.5",
+                "rounded-lg border border-[var(--glass-border)] bg-[var(--surface-overlay)] px-3 py-1.5",
                 "text-sm font-medium text-[var(--foreground-secondary)]",
-                "transition-all duration-200",
-                "group-hover:border-[var(--border)] group-hover:bg-white"
+                "transition-all duration-300",
+                "group-hover:border-[var(--glass-border-hover)] group-hover:bg-[var(--surface-sunken)]"
               )}
             >
               {skill.name}

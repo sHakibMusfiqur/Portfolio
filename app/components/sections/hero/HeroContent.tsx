@@ -8,10 +8,10 @@ import { fadeUp, staggerContainer } from "@/lib/animations";
 export default function HeroContent() {
   return (
     <motion.div
-      variants={staggerContainer(0.08)}
+      variants={staggerContainer(0.1)}
       initial="hidden"
       animate="visible"
-      className="flex max-w-2xl flex-col items-start gap-6"
+      className="flex max-w-2xl flex-col items-start gap-8"
     >
       <motion.div variants={fadeUp}>
         <Badge>
@@ -23,16 +23,19 @@ export default function HeroContent() {
         </Badge>
       </motion.div>
 
-      <motion.div variants={fadeUp} className="space-y-3">
-        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
+      <motion.div variants={fadeUp} className="space-y-5">
+        <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[var(--muted)]">
           Software Engineer
         </p>
 
-        <h1 id="hero-heading" className="text-5xl font-bold leading-[1.08] tracking-tight text-[var(--foreground)] sm:text-6xl lg:text-7xl">
+        <h1
+          id="hero-heading"
+          className="text-5xl font-bold leading-[1.05] tracking-tight text-[var(--foreground)] sm:text-6xl lg:text-7xl xl:text-8xl"
+        >
           Building digital
           <br />
           experiences that{" "}
-          <span className="bg-gradient-to-r from-[var(--primary)] to-rose-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[var(--primary)] to-rose-500 bg-clip-text text-transparent">
             matter.
           </span>
         </h1>
@@ -40,7 +43,7 @@ export default function HeroContent() {
 
       <motion.p
         variants={fadeUp}
-        className="max-w-lg text-base leading-relaxed text-[var(--muted)] sm:text-lg"
+        className="max-w-lg text-base leading-relaxed text-[var(--muted)] sm:text-lg lg:text-xl"
       >
         Full-stack engineer specializing in enterprise software, AI-powered
         applications, and scalable platforms. Turning complex problems into
@@ -49,17 +52,17 @@ export default function HeroContent() {
 
       <motion.div
         variants={fadeUp}
-        className="flex flex-wrap items-center gap-3 pt-2"
+        className="flex flex-wrap items-center gap-4 pt-2"
       >
-        <div className="flex items-center gap-2 text-sm text-[var(--muted)]">
-          <span className="flex size-8 items-center justify-center rounded-full bg-[var(--surface-sunken)] text-xs font-semibold text-[var(--foreground-secondary)]">
+        <div className="flex items-center gap-3 text-sm text-[var(--muted)]">
+          <span className="flex size-9 items-center justify-center rounded-full bg-[var(--surface-sunken)] text-xs font-semibold text-[var(--foreground-secondary)]">
             MS
           </span>
           <span>Musfiqur Shakib</span>
         </div>
-          <span className="hidden size-1 rounded-full bg-[var(--border)] sm:block" aria-hidden="true" />
-        <div className="flex items-center gap-1.5 text-sm text-[var(--muted)]">
-          <span className="size-1.5 rounded-full bg-[var(--success)]" />
+        <span className="hidden size-1 rounded-full bg-[var(--border)] sm:block" aria-hidden="true" />
+        <div className="flex items-center gap-2 text-sm text-[var(--muted)]">
+          <span className="size-2 rounded-full bg-[var(--success)]" />
           Open to work
         </div>
       </motion.div>

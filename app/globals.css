@@ -1,49 +1,57 @@
 @import "tailwindcss";
 
-/* ─── Design Tokens ─── */
+/* ─── Design Tokens — Premium Dark ─── */
 :root {
   /* Background */
-  --background: #ffffff;
-  --surface: #fafbfc;
-  --surface-sunken: #f4f6f8;
-  --surface-overlay: #ffffff;
+  --background: #09090B;
+  --surface: #0F1117;
+  --surface-sunken: #161821;
+  --surface-overlay: #121218;
 
   /* Foreground */
-  --foreground: #0c1222;
-  --foreground-secondary: #3b4760;
-  --muted: #7c89a0;
-  --muted-light: #a8b4c4;
+  --foreground: #FFFFFF;
+  --foreground-secondary: #A1A1AA;
+  --muted: #71717A;
+  --muted-light: #52525B;
 
   /* Brand */
-  --primary: #dc143c;
-  --primary-hover: #b91032;
-  --primary-muted: rgba(220, 20, 60, 0.08);
-  --primary-foreground: #ffffff;
+  --primary: #DC143C;
+  --primary-hover: #B91032;
+  --primary-muted: rgba(220, 20, 60, 0.12);
+  --primary-foreground: #FFFFFF;
 
   /* Accent */
-  --accent: #0ea5e9;
-  --accent-hover: #0284c7;
-  --accent-muted: rgba(14, 165, 233, 0.08);
+  --accent: #DC143C;
+  --accent-hover: #B91032;
+  --accent-muted: rgba(220, 20, 60, 0.08);
+
+  /* Glass */
+  --glass: rgba(18, 18, 24, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(255, 255, 255, 0.14);
+  --glass-highlight: rgba(255, 255, 255, 0.04);
 
   /* Border */
-  --border: #e4e8ed;
-  --border-light: #eef1f5;
-  --border-focus: #cbd2dc;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-light: rgba(255, 255, 255, 0.06);
+  --border-focus: rgba(255, 255, 255, 0.16);
 
   /* Feedback */
-  --success: #16a34a;
-  --warning: #f59e0b;
-  --error: #dc2626;
-  --info: #2563eb;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #3B82F6;
 
   /* Shadow */
-  --shadow-xs: 0 1px 2px rgba(12, 18, 34, 0.04);
-  --shadow-sm: 0 1px 3px rgba(12, 18, 34, 0.06), 0 1px 2px rgba(12, 18, 34, 0.04);
-  --shadow-md: 0 4px 8px -1px rgba(12, 18, 34, 0.06), 0 2px 4px -2px rgba(12, 18, 34, 0.04);
-  --shadow-lg: 0 10px 24px -3px rgba(12, 18, 34, 0.08), 0 4px 8px -4px rgba(12, 18, 34, 0.04);
-  --shadow-xl: 0 20px 40px -5px rgba(12, 18, 34, 0.10), 0 8px 16px -6px rgba(12, 18, 34, 0.04);
-  --shadow-2xl: 0 32px 64px -8px rgba(12, 18, 34, 0.14), 0 12px 24px -8px rgba(12, 18, 34, 0.06);
-  --shadow-ring: 0 0 0 3px rgba(220, 20, 60, 0.15);
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 24px -3px rgba(0, 0, 0, 0.5), 0 4px 8px -4px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 40px -5px rgba(0, 0, 0, 0.6), 0 8px 16px -6px rgba(0, 0, 0, 0.3);
+  --shadow-2xl: 0 32px 64px -8px rgba(0, 0, 0, 0.7), 0 12px 24px -8px rgba(0, 0, 0, 0.4);
+  --shadow-ring: 0 0 0 3px rgba(220, 20, 60, 0.25);
+  --shadow-glow: 0 0 40px rgba(220, 20, 60, 0.15);
+  --shadow-glow-sm: 0 0 20px rgba(220, 20, 60, 0.1);
 
   /* Radius */
   --radius-xs: 4px;
@@ -96,16 +104,17 @@
   --text-5xl: 3rem;
   --text-6xl: 3.75rem;
   --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
 
   --leading-none: 1;
-  --leading-tight: 1.2;
-  --leading-snug: 1.375;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.625;
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.7;
   --leading-loose: 2;
 
   --tracking-tighter: -0.04em;
-  --tracking-tight: -0.02em;
+  --tracking-tight: -0.025em;
   --tracking-normal: 0;
   --tracking-wide: 0.025em;
   --tracking-wider: 0.05em;
@@ -141,6 +150,10 @@
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
   --color-accent-muted: var(--accent-muted);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-glass-border-hover: var(--glass-border-hover);
+  --color-glass-highlight: var(--glass-highlight);
   --color-border: var(--border);
   --color-border-light: var(--border-light);
   --color-border-focus: var(--border-focus);
@@ -155,6 +168,8 @@
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
   --shadow-ring: var(--shadow-ring);
+  --shadow-glow: var(--shadow-glow);
+  --shadow-glow-sm: var(--shadow-glow-sm);
 
   --font-sans: var(--font-family-sans);
   --font-mono: var(--font-family-mono);
@@ -246,10 +261,10 @@ canvas {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-light);
+  background: rgba(255, 255, 255, 0.18);
 }

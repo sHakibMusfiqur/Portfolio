@@ -14,9 +14,9 @@ export default function Card({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-[var(--border-light)] bg-white p-6 shadow-[var(--shadow-xs)]",
+        "rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-6 shadow-[var(--shadow-sm)] backdrop-blur-xl",
         "transition-all duration-300",
-        hover && "hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-md)]",
+        hover && "hover:border-[var(--glass-border-hover)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-0.5",
         className
       )}
     >
