@@ -21,7 +21,7 @@ const sectionIcons: Record<string, React.ElementType> = {
 const socialLinks = [
   { label: "GitHub", href: "https://github.com/musfiqurshakib", icon: GitFork },
   { label: "LinkedIn", href: "https://linkedin.com/in/musfiqurshakib", icon: Globe },
-  { label: "Email", href: "mailto:musfiqur@example.com", icon: Send },
+  { label: "Twitter", href: "https://twitter.com/musfiqurshakib", icon: Send },
 ];
 
 export default function Sidebar() {
@@ -64,10 +64,20 @@ export default function Sidebar() {
       initial="hidden"
       animate="visible"
       aria-label="Side navigation"
-      className="flex flex-col items-center gap-2"
+      className="pointer-events-auto fixed z-[200] hidden lg:flex flex-col items-center border backdrop-blur-[18px]"
+      style={{
+        left: 32,
+        top: 150,
+        width: 54,
+        borderRadius: 28,
+        background: "rgba(12,14,20,0.82)",
+        borderColor: "rgba(255,255,255,0.06)",
+        boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+        padding: "16px 0",
+      }}
     >
-      {/* Navigation icons */}
-      <div className="flex flex-col items-center gap-1 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-2 backdrop-blur-2xl shadow-[var(--shadow-lg)]">
+      {/* ── Navigation Icons ── */}
+      <div className="flex flex-col items-center" style={{ gap: 18 }}>
         {NAV_LINKS.map((link) => {
           const Icon = sectionIcons[link.href] || Home;
           const isActive = activeSection === link.href;
@@ -78,19 +88,23 @@ export default function Sidebar() {
                 aria-label={link.label}
                 aria-current={isActive ? "true" : undefined}
                 className={cn(
-                  "group relative flex size-10 items-center justify-center rounded-xl transition-all duration-300",
+                  "relative flex items-center justify-center transition-all duration-300",
                   isActive
-                    ? "bg-[var(--primary-muted)] text-[var(--primary)]"
-                    : "text-[var(--muted)] hover:bg-[var(--glass-highlight)] hover:text-[var(--foreground-secondary)]"
+                    ? "text-white"
+                    : "text-white/70 hover:text-white/90"
                 )}
+                style={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: isActive ? 10 : "50%",
+                  background: isActive
+                    ? "rgba(220,20,60,0.15)"
+                    : "transparent",
+                  boxShadow: isActive
+                    ? "0 0 12px rgba(220,20,60,0.25)"
+                    : "none",
+                }}
               >
-                {isActive && (
-                  <motion.span
-                    layoutId="sidebar-active"
-                    className="absolute inset-0 rounded-xl bg-[var(--primary-muted)]"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
                 <Icon className="relative z-10 size-[18px]" strokeWidth={1.8} />
               </button>
             </motion.div>
@@ -98,11 +112,11 @@ export default function Sidebar() {
         })}
       </div>
 
-      {/* Separator */}
-      <div className="my-1 h-px w-6 bg-[var(--glass-border)]" />
+      {/* ── Spacer ── */}
+      <div className="flex-1" />
 
-      {/* Social icons */}
-      <div className="flex flex-col items-center gap-1 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-2 backdrop-blur-2xl shadow-[var(--shadow-lg)]">
+      {/* ── Social Icons ── */}
+      <div className="flex flex-col items-center" style={{ gap: 18 }}>
         {socialLinks.map((link) => (
           <motion.div key={link.label} variants={fadeUp}>
             <Link
@@ -110,13 +124,29 @@ export default function Sidebar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={link.label}
-              className="group flex size-10 items-center justify-center rounded-xl text-[var(--muted)] transition-all duration-300 hover:bg-[var(--glass-highlight)] hover:text-[var(--foreground-secondary)]"
+              className="flex items-center justify-center text-white/70 transition-all duration-300 hover:text-white/90"
+              style={{
+                width: 36,
+                height: 36,
+                borderRadius: 10,
+                background: "rgba(255,255,255,0.04)",
+              }}
             >
               <link.icon className="size-[18px]" strokeWidth={1.8} />
             </Link>
           </motion.div>
         ))}
       </div>
+
+      {/* ── Crimson Line ── */}
+      <div
+        className="mt-4 rounded-full"
+        style={{
+          width: 2,
+          height: 42,
+          background: "#DC143C",
+        }}
+      />
     </motion.aside>
   );
 }

@@ -61,132 +61,128 @@ export default function Navbar() {
   return (
     <>
       {/* ═══════════════════════════════════════════
-          DESKTOP — Three Independent Floating Elements
+          DESKTOP — Three-Column Header
          ═══════════════════════════════════════════ */}
-
-      {/* ── Element 1: Logo (Top Left) ── */}
-      <div
-        className={cn(
-          "pointer-events-auto fixed top-6 z-50 hidden lg:block",
-          "left-[40px]"
-        )}
-      >
-        <Logo />
-      </div>
-
-      {/* ── Element 2: Navigation Pill (Center) ── */}
-      <nav
-        aria-label="Main navigation"
-        className={cn(
-          "pointer-events-auto fixed left-1/2 top-6 z-50 hidden -translate-x-1/2 lg:block"
-        )}
+      <header
+        className="pointer-events-auto fixed inset-x-0 top-5 z-[1000] hidden px-10 lg:block"
       >
         <div
-          className={cn(
-            "flex h-[60px] w-[760px] items-center justify-center rounded-full border px-5",
-            "bg-[rgba(15,15,20,0.72)] backdrop-blur-[20px]",
-            "border-[rgba(255,255,255,0.08)] shadow-[0_4px_24px_rgba(0,0,0,0.25)]"
-          )}
+          className="mx-auto grid max-w-[1440px] items-center"
+          style={{ gridTemplateColumns: "1fr auto 1fr" }}
         >
-          <ul className="flex items-center gap-[40px]" role="list">
-            {NAV_LINKS.map((link) => {
-              const isActive = activeSection === link.href;
-              return (
-                <li key={link.href} role="listitem">
-                  <Link
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleNavClick(link.href);
-                    }}
-                    aria-current={isActive ? "page" : undefined}
-                    className={cn(
-                      "relative flex flex-col items-center gap-1 text-[15px] font-medium transition-colors duration-300",
-                      isActive
-                        ? "text-[#DC143C]"
-                        : "text-white hover:text-[#DC143C]"
-                    )}
-                  >
-                    <span className="relative z-10">{link.label}</span>
+          {/* Left — Logo */}
+          <div className="flex items-center justify-start">
+            <Logo />
+          </div>
 
-                    {isActive && (
-                      <motion.span
-                        layoutId="nav-active-indicator"
-                        className="flex flex-col items-center gap-0.5"
-                        transition={{
-                          type: "spring",
-                          stiffness: 380,
-                          damping: 30,
-                        }}
-                      >
-                        <span className="block h-[2px] w-4 rounded-full bg-[#DC143C] shadow-[0_0_8px_#DC143C]" />
-                        <span className="block size-1 rounded-full bg-[#DC143C] shadow-[0_0_6px_#DC143C]" />
-                      </motion.span>
-                    )}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </nav>
-
-      {/* ── Element 3: Download CV Button (Top Right) ── */}
-      <div
-        className={cn(
-          "pointer-events-auto fixed top-6 z-50 hidden lg:block",
-          "right-[40px]"
-        )}
-      >
-        <Link
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative inline-flex items-center justify-center rounded-full p-[2px]"
-          style={{ height: 52 }}
-        >
-          {/* Rotating conic-gradient border */}
-          <span
-            className="absolute inset-0 rounded-full"
-            style={{
-              background:
-                "conic-gradient(from 0deg, rgba(220,20,60,0.9), transparent 30%, transparent 70%, rgba(220,20,60,0.9))",
-              animation: "cv-spin 4s linear infinite",
-            }}
-          />
-
-          {/* Hover glow layer */}
-          <span
-            className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            style={{
-              background:
-                "conic-gradient(from 0deg, rgba(220,20,60,1), transparent 30%, transparent 70%, rgba(220,20,60,1))",
-              animation: "cv-spin 4s linear infinite",
-              filter: "blur(6px)",
-            }}
-          />
-
-          {/* Inner button (masks center to create 2px border) */}
-          <span
-            className={cn(
-              "relative z-10 flex items-center justify-center gap-2.5 rounded-full",
-              "h-[48px] px-7",
-              "bg-[rgba(15,15,20,0.92)] text-[15px] font-semibold text-white",
-              "transition-all duration-300",
-              "group-hover:bg-[rgba(15,15,20,0.98)]"
-            )}
+          {/* Center — Navigation Pill */}
+          <nav
+            aria-label="Main navigation"
+            className="pointer-events-auto flex justify-center"
           >
-            <Download
-              className="size-4 transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(220,20,60,0.5)]"
-              strokeWidth={2.5}
-              aria-hidden="true"
-            />
-            Download CV
-          </span>
-        </Link>
-      </div>
+            <div
+              className={cn(
+                "flex h-[60px] w-[760px] items-center justify-center rounded-full border px-5",
+                "bg-[rgba(15,15,20,0.72)] backdrop-blur-[20px]",
+                "border-[rgba(255,255,255,0.08)] shadow-[0_4px_24px_rgba(0,0,0,0.25)]"
+              )}
+            >
+              <ul className="flex items-center gap-[40px]" role="list">
+                {NAV_LINKS.map((link) => {
+                  const isActive = activeSection === link.href;
+                  return (
+                    <li key={link.href} role="listitem">
+                      <Link
+                        href={link.href}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleNavClick(link.href);
+                        }}
+                        aria-current={isActive ? "page" : undefined}
+                        className={cn(
+                          "relative flex flex-col items-center gap-1 text-[15px] font-medium transition-colors duration-300",
+                          isActive
+                            ? "text-[#DC143C]"
+                            : "text-white hover:text-[#DC143C]"
+                        )}
+                      >
+                        <span className="relative z-10">{link.label}</span>
 
-      {/* Keyframes for rotating border — injected once */}
+                        {isActive && (
+                          <motion.span
+                            layoutId="nav-active-indicator"
+                            className="flex flex-col items-center gap-0.5"
+                            transition={{
+                              type: "spring",
+                              stiffness: 380,
+                              damping: 30,
+                            }}
+                          >
+                            <span className="block h-[2px] w-4 rounded-full bg-[#DC143C] shadow-[0_0_8px_#DC143C]" />
+                            <span className="block size-1 rounded-full bg-[#DC143C] shadow-[0_0_6px_#DC143C]" />
+                          </motion.span>
+                        )}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </nav>
+
+          {/* Right — Download CV Button */}
+          <div className="flex items-center justify-end">
+            <Link
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center justify-center rounded-full p-[2px]"
+              style={{ height: 52 }}
+            >
+              {/* Rotating conic-gradient border */}
+              <span
+                className="absolute inset-0 rounded-full"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg, rgba(220,20,60,0.9), transparent 30%, transparent 70%, rgba(220,20,60,0.9))",
+                  animation: "cv-spin 4s linear infinite",
+                }}
+              />
+
+              {/* Hover glow layer */}
+              <span
+                className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg, rgba(220,20,60,1), transparent 30%, transparent 70%, rgba(220,20,60,1))",
+                  animation: "cv-spin 4s linear infinite",
+                  filter: "blur(6px)",
+                }}
+              />
+
+              {/* Inner button */}
+              <span
+                className={cn(
+                  "relative z-10 flex items-center justify-center gap-2.5 rounded-full",
+                  "h-[48px] px-7",
+                  "bg-[rgba(15,15,20,0.92)] text-[15px] font-semibold text-white",
+                  "transition-all duration-300",
+                  "group-hover:bg-[rgba(15,15,20,0.98)]"
+                )}
+              >
+                <Download
+                  className="size-4 transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(220,20,60,0.5)]"
+                  strokeWidth={2.5}
+                  aria-hidden="true"
+                />
+                Download CV
+              </span>
+            </Link>
+          </div>
+        </div>
+      </header>
+
+      {/* Keyframes for rotating border */}
       <style
         dangerouslySetInnerHTML={{
           __html: `@keyframes cv-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`,

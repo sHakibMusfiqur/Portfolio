@@ -1,26 +1,9 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StructuredData from "@/components/common/StructuredData";
-import Hero from "@/components/sections/hero/Hero";
-
-const About = dynamic(() => import("@/components/sections/about/About"), {
-  loading: () => <div className="h-96" />,
-});
-const Skills = dynamic(() => import("@/components/sections/skills/Skills"), {
-  loading: () => <div className="h-96" />,
-});
-const Projects = dynamic(() => import("@/components/sections/projects/Projects"), {
-  loading: () => <div className="h-96" />,
-});
-const Research = dynamic(() => import("@/components/sections/research/Research"), {
-  loading: () => <div className="h-96" />,
-});
-const Contact = dynamic(() => import("@/components/sections/contact/Contact"), {
-  loading: () => <div className="h-96" />,
-});
+import HeroV2 from "@/components/sections/hero/HeroV2";
 
 export const metadata: Metadata = {
   title: "Musfiqur Shakib — Software Engineer",
@@ -46,12 +29,7 @@ export default function Home() {
       <Navbar />
 
       <main id="main-content">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Research />
-        <Contact />
+        <HeroV2 />
       </main>
 
       <Footer />
