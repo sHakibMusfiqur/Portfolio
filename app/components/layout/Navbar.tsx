@@ -137,7 +137,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center rounded-full p-[2px]"
-              style={{ height: 60 }}
+              style={{ height: 46 }}
             >
               {/* Rotating conic-gradient border */}
               <span
@@ -162,31 +162,31 @@ export default function Navbar() {
 
               {/* Inner button */}
               <span
-                className={cn(
-                  "relative z-10 flex items-center justify-center rounded-full",
-                  "bg-[rgba(15,15,20,0.92)] text-white",
-                  "transition-all duration-300",
-                  "group-hover:bg-[rgba(15,15,20,0.98)]"
-                )}
+                className="relative z-10 flex items-center justify-center rounded-full border backdrop-blur-md transition-all duration-300 ease-out group-hover:-translate-y-px"
                 style={{
-                  height: 56,
-                  paddingLeft: 28,
-                  paddingRight: 28,
-                  paddingTop: 14,
-                  paddingBottom: 14,
+                  borderColor: "#DC143C",
+                  background: "rgba(10,10,14,0.75)",
+                  paddingLeft: 22,
+                  paddingRight: 22,
+                  paddingTop: 12,
+                  paddingBottom: 12,
                   gap: 10,
-                  fontSize: 18,
-                  fontWeight: 600,
+                  boxShadow: "0 0 12px rgba(220,20,60,0.15)",
                 }}
               >
                 <Download
-                  className="transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(220,20,60,0.5)]"
+                  className="transition-all duration-300"
                   size={18}
-                  strokeWidth={1.5}
+                  strokeWidth={2}
+                  style={{ color: "#DC143C" }}
                   aria-hidden="true"
                 />
-                <span>Download </span>
-                <span style={{ color: "#DC143C" }}>CV</span>
+                <span className="text-white" style={{ fontSize: 16, fontWeight: 600 }}>
+                  Download{" "}
+                </span>
+                <span style={{ color: "#DC143C", fontSize: 16, fontWeight: 600 }}>
+                  CV
+                </span>
               </span>
             </Link>
           </div>
