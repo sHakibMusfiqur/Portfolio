@@ -4,10 +4,15 @@ export default function Logo() {
   return (
     <Link
       href="/"
-      className="select-none text-[36px] font-[800] leading-none tracking-tight"
+      className="flex select-none shrink-0"
+      style={{ width: 220, paddingLeft: 60 }}
     >
-      <span className="text-white">M</span>
-      <span className="text-[#DC143C]">S</span>
+      <span
+        className="text-white font-[700] leading-none tracking-[-0.02em]"
+        style={{ fontSize: 22 }}
+      >
+        Musfiqur Shakib
+      </span>
     </Link>
   );
 }
