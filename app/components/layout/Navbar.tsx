@@ -142,19 +142,56 @@ export default function Navbar() {
           href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className={cn(
-            "inline-flex items-center justify-center gap-2",
-            "h-12 rounded-full border px-7",
-            "border-[#DC143C] bg-transparent text-[15px] font-semibold text-white",
-            "transition-all duration-300",
-            "hover:bg-[#DC143C] hover:shadow-[0_0_24px_rgba(220,20,60,0.25)]",
-            "active:scale-[0.97]"
-          )}
+          className="group relative inline-flex items-center justify-center rounded-full p-[2px]"
+          style={{ height: 52 }}
         >
-          <Download className="size-4" strokeWidth={2.5} aria-hidden="true" />
-          Download CV
+          {/* Rotating conic-gradient border */}
+          <span
+            className="absolute inset-0 rounded-full"
+            style={{
+              background:
+                "conic-gradient(from 0deg, rgba(220,20,60,0.9), transparent 30%, transparent 70%, rgba(220,20,60,0.9))",
+              animation: "cv-spin 4s linear infinite",
+            }}
+          />
+
+          {/* Hover glow layer */}
+          <span
+            className="absolute inset-0 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            style={{
+              background:
+                "conic-gradient(from 0deg, rgba(220,20,60,1), transparent 30%, transparent 70%, rgba(220,20,60,1))",
+              animation: "cv-spin 4s linear infinite",
+              filter: "blur(6px)",
+            }}
+          />
+
+          {/* Inner button (masks center to create 2px border) */}
+          <span
+            className={cn(
+              "relative z-10 flex items-center justify-center gap-2.5 rounded-full",
+              "h-[48px] px-7",
+              "bg-[rgba(15,15,20,0.92)] text-[15px] font-semibold text-white",
+              "transition-all duration-300",
+              "group-hover:bg-[rgba(15,15,20,0.98)]"
+            )}
+          >
+            <Download
+              className="size-4 transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(220,20,60,0.5)]"
+              strokeWidth={2.5}
+              aria-hidden="true"
+            />
+            Download CV
+          </span>
         </Link>
       </div>
+
+      {/* Keyframes for rotating border — injected once */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `@keyframes cv-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`,
+        }}
+      />
 
       {/* ═══════════════════════════════════════════
           MOBILE — Top Bar + Slide-down Panel
