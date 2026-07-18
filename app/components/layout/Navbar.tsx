@@ -137,7 +137,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center rounded-full p-[2px]"
-              style={{ height: 52 }}
+              style={{ height: 60 }}
             >
               {/* Rotating conic-gradient border */}
               <span
@@ -163,19 +163,30 @@ export default function Navbar() {
               {/* Inner button */}
               <span
                 className={cn(
-                  "relative z-10 flex items-center justify-center gap-2.5 rounded-full",
-                  "h-[48px] px-7",
-                  "bg-[rgba(15,15,20,0.92)] text-[15px] font-semibold text-white",
+                  "relative z-10 flex items-center justify-center rounded-full",
+                  "bg-[rgba(15,15,20,0.92)] text-white",
                   "transition-all duration-300",
                   "group-hover:bg-[rgba(15,15,20,0.98)]"
                 )}
+                style={{
+                  height: 56,
+                  paddingLeft: 28,
+                  paddingRight: 28,
+                  paddingTop: 14,
+                  paddingBottom: 14,
+                  gap: 10,
+                  fontSize: 18,
+                  fontWeight: 600,
+                }}
               >
                 <Download
-                  className="size-4 transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(220,20,60,0.5)]"
-                  strokeWidth={2.5}
+                  className="transition-all duration-300 group-hover:drop-shadow-[0_0_6px_rgba(220,20,60,0.5)]"
+                  size={18}
+                  strokeWidth={1.5}
                   aria-hidden="true"
                 />
-                Download CV
+                <span>Download </span>
+                <span style={{ color: "#DC143C" }}>CV</span>
               </span>
             </Link>
           </div>
