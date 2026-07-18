@@ -21,12 +21,12 @@ export default function Heading({
       )}
     >
       {subtitle && (
-        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-red-500">
+        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[var(--primary)]">
           {subtitle}
         </p>
       )}
 
-      <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+      <h2 className="text-3xl font-bold tracking-tight text-[var(--foreground)] sm:text-4xl md:text-5xl">
         {title}
       </h2>
     </div>

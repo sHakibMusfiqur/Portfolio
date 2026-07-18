@@ -1,0 +1,97 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Briefcase, Calendar, ArrowUpRight } from "lucide-react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
+};
+
+const experiences = [
+  {
+    role: "Software Engineer",
+    company: "Freelance / Contract",
+    period: "2023 — Present",
+    description:
+      "Architecting and building full-stack applications for clients across fintech, e-commerce, and SaaS. Led platform migrations and implemented AI-powered features.",
+    technologies: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "AI/ML"],
+  },
+  {
+    role: "Full Stack Developer",
+    company: "Various Startups",
+    period: "2022 — 2023",
+    description:
+      "Built and shipped production applications from MVP to scale. Implemented authentication systems, payment integrations, and real-time features.",
+    technologies: ["React", "Node.js", "Python", "Docker", "AWS"],
+  },
+];
+
+export default function ExperienceSummary() {
+  return (
+    <motion.div
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+      className="flex flex-col gap-5"
+    >
+      <motion.div variants={fadeUp} className="flex items-center gap-3">
+        <div className="flex size-9 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
+          <Briefcase className="size-4.5 text-[var(--primary)]" strokeWidth={2} />
+        </div>
+        <h3 className="text-lg font-semibold text-[var(--foreground)]">
+          Experience
+        </h3>
+      </motion.div>
+
+      <div className="relative flex flex-col gap-0">
+        {/* Timeline line */}
+        <div className="absolute left-[17px] top-10 bottom-4 w-px bg-[var(--border-light)]" />
+
+        {experiences.map((item, i) => (
+          <motion.div
+            key={item.role}
+            variants={fadeUp}
+            className="group relative flex gap-4 py-4"
+          >
+            {/* Timeline dot */}
+            <div className="relative z-10 mt-1 flex size-[9px] shrink-0 rounded-full border-2 border-[var(--primary)] bg-white" />
+
+            <div className="flex-1 rounded-2xl border border-[var(--border-light)] bg-white p-5 transition-all duration-300 hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-sm)]">
+              <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <p className="text-base font-semibold text-[var(--foreground)]">
+                    {item.role}
+                  </p>
+                  <p className="text-sm font-medium text-[var(--primary)]">
+                    {item.company}
+                  </p>
+                </div>
+                <div className="flex items-center gap-1.5 text-xs text-[var(--muted)]">
+                  <Calendar className="size-3.5" strokeWidth={2} />
+                  {item.period}
+                </div>
+              </div>
+
+              <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
+                {item.description}
+              </p>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {item.technologies.map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-[var(--border-light)] bg-[var(--surface)] px-3 py-1 text-xs font-medium text-[var(--foreground-secondary)]"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
