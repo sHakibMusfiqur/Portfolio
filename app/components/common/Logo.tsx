@@ -4,10 +4,10 @@ export default function Logo() {
   return (
     <Link
       href="/"
-      className="select-none text-xl font-extrabold tracking-tight"
+      className="select-none text-[36px] font-[800] leading-none tracking-tight"
     >
-      <span className="text-[var(--foreground)]">Musfiqur</span>
-      <span className="text-[var(--primary)]">.</span>
+      <span className="text-white">M</span>
+      <span className="text-[#DC143C]">S</span>
     </Link>
   );
 }

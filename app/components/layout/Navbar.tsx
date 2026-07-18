@@ -6,21 +6,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 
 import Logo from "@/components/common/Logo";
-import Container from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS } from "@/constants/navigation";
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("#hero");
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     if (mobileOpen) {
@@ -28,19 +19,18 @@ export default function Navbar() {
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
-  const handleNavClick = useCallback(
-    (href: string) => {
-      setMobileOpen(false);
-      const el = document.querySelector(href);
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
-      }
-    },
-    []
-  );
+  const handleNavClick = useCallback((href: string) => {
+    setMobileOpen(false);
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   useEffect(() => {
     const sectionIds = NAV_LINKS.map((l) => l.href.replace("#", ""));
@@ -66,33 +56,39 @@ export default function Navbar() {
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
-  const desktopNavId = "desktop-nav";
   const mobileNavId = "mobile-nav";
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled ? "py-3" : "py-5"
-      )}
-      role="banner"
-    >
-      <Container className="max-w-[1180px]">
-        {/* ── Desktop Nav — Floating Glass ── */}
-        <nav
-          id={desktopNavId}
-          aria-label="Main navigation"
+    <>
+      {/* ═══════════════════════════════════════════
+          DESKTOP — Three Independent Floating Elements
+         ═══════════════════════════════════════════ */}
+
+      {/* ── Element 1: Logo (Top Left) ── */}
+      <div
+        className={cn(
+          "pointer-events-auto fixed top-6 z-50 hidden lg:block",
+          "left-[40px]"
+        )}
+      >
+        <Logo />
+      </div>
+
+      {/* ── Element 2: Navigation Pill (Center) ── */}
+      <nav
+        aria-label="Main navigation"
+        className={cn(
+          "pointer-events-auto fixed left-1/2 top-6 z-50 hidden -translate-x-1/2 lg:block"
+        )}
+      >
+        <div
           className={cn(
-            "hidden items-center justify-between rounded-full border px-6 transition-all duration-500 lg:flex",
-            "h-14",
-            scrolled
-              ? "border-[var(--glass-border)] bg-[var(--glass)] shadow-[var(--shadow-xl)] backdrop-blur-2xl"
-              : "border-[var(--glass-border)] bg-[rgba(18,18,24,0.6)] shadow-[var(--shadow-sm)] backdrop-blur-xl"
+            "flex h-[60px] w-[760px] items-center justify-center rounded-full border px-5",
+            "bg-[rgba(15,15,20,0.72)] backdrop-blur-[20px]",
+            "border-[rgba(255,255,255,0.08)] shadow-[0_4px_24px_rgba(0,0,0,0.25)]"
           )}
         >
-          <Logo />
-
-          <ul className="flex items-center gap-1" role="list">
+          <ul className="flex items-center gap-[40px]" role="list">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href;
               return (
@@ -103,50 +99,74 @@ export default function Navbar() {
                       e.preventDefault();
                       handleNavClick(link.href);
                     }}
-                    aria-current={isActive ? "true" : undefined}
+                    aria-current={isActive ? "page" : undefined}
                     className={cn(
-                      "relative rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors duration-300",
+                      "relative flex flex-col items-center gap-1 text-[15px] font-medium transition-colors duration-300",
                       isActive
-                        ? "text-[var(--foreground)]"
-                        : "text-[var(--muted)] hover:text-[var(--foreground-secondary)]"
+                        ? "text-[#DC143C]"
+                        : "text-white hover:text-[#DC143C]"
                     )}
                   >
+                    <span className="relative z-10">{link.label}</span>
+
                     {isActive && (
                       <motion.span
-                        layoutId="nav-active"
-                        className="absolute inset-0 rounded-full bg-[var(--primary-muted)]"
+                        layoutId="nav-active-indicator"
+                        className="flex flex-col items-center gap-0.5"
                         transition={{
                           type: "spring",
                           stiffness: 380,
                           damping: 30,
                         }}
-                      />
+                      >
+                        <span className="block h-[2px] w-4 rounded-full bg-[#DC143C] shadow-[0_0_8px_#DC143C]" />
+                        <span className="block size-1 rounded-full bg-[#DC143C] shadow-[0_0_6px_#DC143C]" />
+                      </motion.span>
                     )}
-                    <span className="relative z-10">{link.label}</span>
                   </Link>
                 </li>
               );
             })}
           </ul>
+        </div>
+      </nav>
 
-          <Link
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              "inline-flex items-center gap-2 rounded-full px-5 py-2 text-[13px] font-semibold transition-all duration-300",
-              "bg-[var(--primary)] text-[var(--primary-foreground)]",
-              "hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-glow-sm)]",
-              "active:scale-[0.97]"
-            )}
-          >
-            <Download className="size-3.5" strokeWidth={2.5} aria-hidden="true" />
-            Resume
-          </Link>
-        </nav>
+      {/* ── Element 3: Download CV Button (Top Right) ── */}
+      <div
+        className={cn(
+          "pointer-events-auto fixed top-6 z-50 hidden lg:block",
+          "right-[40px]"
+        )}
+      >
+        <Link
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            "inline-flex items-center justify-center gap-2",
+            "h-12 rounded-full border px-7",
+            "border-[#DC143C] bg-transparent text-[15px] font-semibold text-white",
+            "transition-all duration-300",
+            "hover:bg-[#DC143C] hover:shadow-[0_0_24px_rgba(220,20,60,0.25)]",
+            "active:scale-[0.97]"
+          )}
+        >
+          <Download className="size-4" strokeWidth={2.5} aria-hidden="true" />
+          Download CV
+        </Link>
+      </div>
 
-        {/* ── Mobile Nav ── */}
-        <div className="flex items-center justify-between lg:hidden">
+      {/* ═══════════════════════════════════════════
+          MOBILE — Top Bar + Slide-down Panel
+         ═══════════════════════════════════════════ */}
+
+      {/* ── Mobile: Top Bar ── */}
+      <header
+        className={cn(
+          "fixed inset-x-0 top-0 z-50 transition-all duration-500 lg:hidden"
+        )}
+      >
+        <div className="flex items-center justify-between px-5 pt-4">
           <Logo />
 
           <button
@@ -156,10 +176,9 @@ export default function Navbar() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             className={cn(
               "flex size-10 items-center justify-center rounded-full border transition-all duration-300",
-              scrolled
-                ? "border-[var(--glass-border)] bg-[var(--glass)] shadow-[var(--shadow-md)] backdrop-blur-2xl"
-                : "border-[var(--glass-border)] bg-[rgba(18,18,24,0.6)] backdrop-blur-xl",
-              mobileOpen && "!border-[var(--glass-border-hover)]"
+              "border-[rgba(255,255,255,0.08)] bg-[rgba(15,15,20,0.72)] backdrop-blur-[20px]",
+              "shadow-[0_2px_12px_rgba(0,0,0,0.2)]",
+              mobileOpen && "!border-[rgba(255,255,255,0.14)]"
             )}
           >
             <AnimatePresence mode="wait" initial={false}>
@@ -172,7 +191,7 @@ export default function Navbar() {
                   transition={{ duration: 0.15 }}
                   aria-hidden="true"
                 >
-                  <X className="size-4.5 text-[var(--foreground)]" strokeWidth={2} />
+                  <X className="size-4.5 text-white" strokeWidth={2} />
                 </motion.span>
               ) : (
                 <motion.span
@@ -183,15 +202,15 @@ export default function Navbar() {
                   transition={{ duration: 0.15 }}
                   aria-hidden="true"
                 >
-                  <Menu className="size-4.5 text-[var(--foreground)]" strokeWidth={2} />
+                  <Menu className="size-4.5 text-white" strokeWidth={2} />
                 </motion.span>
               )}
             </AnimatePresence>
           </button>
         </div>
-      </Container>
+      </header>
 
-      {/* ── Mobile Menu Panel ── */}
+      {/* ── Mobile: Slide-down Menu Panel ── */}
       <AnimatePresence>
         {mobileOpen && (
           <>
@@ -215,7 +234,7 @@ export default function Navbar() {
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
               className={cn(
                 "fixed inset-x-0 top-[76px] z-50 mx-3 overflow-hidden rounded-2xl border lg:hidden",
-                "border-[var(--glass-border)] bg-[var(--glass)] shadow-[var(--shadow-2xl)] backdrop-blur-2xl"
+                "border-[rgba(255,255,255,0.08)] bg-[rgba(15,15,20,0.92)] shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-[24px]"
               )}
             >
               <div className="flex flex-col p-3" role="list">
@@ -243,8 +262,8 @@ export default function Navbar() {
                         className={cn(
                           "flex items-center rounded-xl px-4 py-2.5 text-sm font-medium transition-colors duration-200",
                           isActive
-                            ? "bg-[var(--primary-muted)] text-[var(--foreground)]"
-                            : "text-[var(--muted)] hover:bg-[var(--glass-highlight)] hover:text-[var(--foreground-secondary)]"
+                            ? "bg-[rgba(220,20,60,0.1)] text-[#DC143C]"
+                            : "text-white hover:bg-[rgba(255,255,255,0.04)] hover:text-[#DC143C]"
                         )}
                       >
                         {link.label}
@@ -253,7 +272,10 @@ export default function Navbar() {
                   );
                 })}
 
-                <div className="my-1 h-px bg-[var(--glass-border)]" aria-hidden="true" />
+                <div
+                  className="my-1 h-px bg-[rgba(255,255,255,0.06)]"
+                  aria-hidden="true"
+                />
 
                 <motion.div
                   initial={{ opacity: 0, y: -4 }}
@@ -271,14 +293,18 @@ export default function Navbar() {
                     rel="noopener noreferrer"
                     onClick={() => setMobileOpen(false)}
                     className={cn(
-                      "flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-300",
-                      "bg-[var(--primary)] text-[var(--primary-foreground)]",
-                      "hover:bg-[var(--primary-hover)] hover:shadow-[var(--shadow-glow-sm)]",
+                      "flex items-center justify-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition-all duration-300",
+                      "border-[#DC143C] text-[#DC143C]",
+                      "hover:bg-[rgba(220,20,60,0.1)] hover:shadow-[0_0_16px_rgba(220,20,60,0.12)]",
                       "active:scale-[0.98]"
                     )}
                   >
-                    <Download className="size-3.5" strokeWidth={2.5} aria-hidden="true" />
-                    Download Resume
+                    <Download
+                      className="size-3.5"
+                      strokeWidth={2.5}
+                      aria-hidden="true"
+                    />
+                    Download CV
                   </Link>
                 </motion.div>
               </div>
@@ -286,6 +312,6 @@ export default function Navbar() {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
