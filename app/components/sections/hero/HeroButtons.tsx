@@ -1,0 +1,43 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowRight, Download } from "lucide-react";
+
+import Button from "@/components/ui/Button";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+  },
+};
+
+export default function HeroButtons() {
+  return (
+    <motion.div
+      variants={{
+        hidden: {},
+        visible: { transition: { staggerChildren: 0.08 } },
+      }}
+      initial="hidden"
+      animate="visible"
+      className="flex flex-wrap items-center gap-3 pt-4"
+    >
+      <motion.div variants={fadeUp}>
+        <Button href="#projects" variant="primary">
+          View Projects
+          <ArrowRight className="size-4" strokeWidth={2.5} />
+        </Button>
+      </motion.div>
+
+      <motion.div variants={fadeUp}>
+        <Button href="/resume.pdf" variant="secondary" className="group">
+          <Download className="size-4 transition-transform duration-200 group-hover:-translate-y-0.5" strokeWidth={2.5} />
+          Download Resume
+        </Button>
+      </motion.div>
+    </motion.div>
+  );
+}

@@ -6,8 +6,8 @@ export default function Logo() {
       href="/"
       className="select-none text-2xl font-extrabold tracking-tight"
     >
-      <span className="text-slate-900">Musfiqur</span>
-      <span className="text-[#DC143C]">.</span>
+      <span className="text-[var(--foreground)]">Musfiqur</span>
+      <span className="text-[var(--primary)]">.</span>
     </Link>
   );
 }
