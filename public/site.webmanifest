@@ -1,0 +1,16 @@
+{
+  "name": "Musfiqur Shakib — Software Engineer",
+  "short_name": "Musfiqur Shakib",
+  "description": "Full-stack software engineer specializing in enterprise software, AI-powered applications, and scalable platforms.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#dc143c",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
+}

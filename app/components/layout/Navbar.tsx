@@ -66,16 +66,22 @@ export default function Navbar() {
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
+  const desktopNavId = "desktop-nav";
+  const mobileNavId = "mobile-nav";
+
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled ? "py-3" : "py-4"
       )}
+      role="banner"
     >
       <Container>
         {/* ── Desktop Nav ── */}
         <nav
+          id={desktopNavId}
+          aria-label="Main navigation"
           className={cn(
             "hidden items-center justify-between rounded-full border px-6 transition-all duration-300 lg:flex",
             "h-14",
@@ -86,17 +92,18 @@ export default function Navbar() {
         >
           <Logo />
 
-          <ul className="flex items-center gap-1">
+          <ul className="flex items-center gap-1" role="list">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href;
               return (
-                <li key={link.href}>
+                <li key={link.href} role="listitem">
                   <Link
                     href={link.href}
                     onClick={(e) => {
                       e.preventDefault();
                       handleNavClick(link.href);
                     }}
+                    aria-current={isActive ? "true" : undefined}
                     className={cn(
                       "relative rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-colors duration-200",
                       isActive
@@ -133,7 +140,7 @@ export default function Navbar() {
               "active:scale-[0.97]"
             )}
           >
-            <Download className="size-3.5" strokeWidth={2.5} />
+            <Download className="size-3.5" strokeWidth={2.5} aria-hidden="true" />
             Resume
           </Link>
         </nav>
@@ -144,6 +151,9 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileOpen((v) => !v)}
+            aria-expanded={mobileOpen}
+            aria-controls={mobileNavId}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             className={cn(
               "flex size-10 items-center justify-center rounded-full transition-all duration-200",
               scrolled
@@ -151,7 +161,6 @@ export default function Navbar() {
                 : "border border-transparent bg-white/50 backdrop-blur-sm",
               mobileOpen && "!border-[var(--border)]"
             )}
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             <AnimatePresence mode="wait" initial={false}>
               {mobileOpen ? (
@@ -161,6 +170,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, rotate: 0 }}
                   exit={{ opacity: 0, rotate: 90 }}
                   transition={{ duration: 0.15 }}
+                  aria-hidden="true"
                 >
                   <X className="size-4.5" strokeWidth={2} />
                 </motion.span>
@@ -171,6 +181,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, rotate: 0 }}
                   exit={{ opacity: 0, rotate: -90 }}
                   transition={{ duration: 0.15 }}
+                  aria-hidden="true"
                 >
                   <Menu className="size-4.5" strokeWidth={2} />
                 </motion.span>
@@ -191,9 +202,13 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
               className="fixed inset-0 z-40 bg-black/10 backdrop-blur-xs lg:hidden"
               onClick={() => setMobileOpen(false)}
+              aria-hidden="true"
             />
 
             <motion.div
+              id={mobileNavId}
+              role="dialog"
+              aria-label="Mobile navigation"
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
@@ -203,7 +218,7 @@ export default function Navbar() {
                 "border-[var(--border-light)] bg-white/90 shadow-[var(--shadow-2xl)] backdrop-blur-xl"
               )}
             >
-              <div className="flex flex-col p-3">
+              <div className="flex flex-col p-3" role="list">
                 {NAV_LINKS.map((link, i) => {
                   const isActive = activeSection === link.href;
                   return (
@@ -216,6 +231,7 @@ export default function Navbar() {
                         duration: 0.2,
                         ease: [0.16, 1, 0.3, 1],
                       }}
+                      role="listitem"
                     >
                       <Link
                         href={link.href}
@@ -223,6 +239,7 @@ export default function Navbar() {
                           e.preventDefault();
                           handleNavClick(link.href);
                         }}
+                        aria-current={isActive ? "page" : undefined}
                         className={cn(
                           "flex items-center rounded-xl px-4 py-2.5 text-sm font-medium transition-colors duration-150",
                           isActive
@@ -236,7 +253,7 @@ export default function Navbar() {
                   );
                 })}
 
-                <div className="my-1 h-px bg-[var(--border-light)]" />
+                <div className="my-1 h-px bg-[var(--border-light)]" aria-hidden="true" />
 
                 <motion.div
                   initial={{ opacity: 0, y: -4 }}
@@ -246,6 +263,7 @@ export default function Navbar() {
                     duration: 0.2,
                     ease: [0.16, 1, 0.3, 1],
                   }}
+                  role="listitem"
                 >
                   <Link
                     href="/resume.pdf"
@@ -259,7 +277,7 @@ export default function Navbar() {
                       "active:scale-[0.98]"
                     )}
                   >
-                    <Download className="size-3.5" strokeWidth={2.5} />
+                    <Download className="size-3.5" strokeWidth={2.5} aria-hidden="true" />
                     Download Resume
                   </Link>
                 </motion.div>

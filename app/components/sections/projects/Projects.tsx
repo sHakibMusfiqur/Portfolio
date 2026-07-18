@@ -13,9 +13,9 @@ import ProjectCard from "./ProjectCard";
 
 export default function Projects() {
   return (
-    <Section id="projects" className="relative overflow-hidden">
+    <Section id="projects" aria-labelledby="projects-heading" className="relative overflow-hidden">
       {/* Background accent */}
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute -right-40 top-1/4 h-[500px] w-[500px] rounded-full bg-[var(--primary)]/[0.02] blur-3xl" />
       </div>
 
@@ -29,7 +29,7 @@ export default function Projects() {
           className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
         >
           <div className="max-w-2xl">
-            <Heading subtitle="Projects" title="Selected work" />
+            <Heading id="projects-heading" subtitle="Projects" title="Selected work" />
             <p className="mt-4 text-base text-[var(--muted)] sm:text-lg">
               A selection of projects that showcase my approach to building
               scalable, user-focused software.

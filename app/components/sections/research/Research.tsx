@@ -115,9 +115,9 @@ const typeConfig = {
 
 export default function Research() {
   return (
-    <Section id="research" className="relative overflow-hidden bg-[var(--surface)]">
+    <Section id="research" aria-labelledby="research-heading" className="relative overflow-hidden bg-[var(--surface)]">
       {/* Background accent */}
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute -left-32 top-1/3 h-[400px] w-[400px] rounded-full bg-[var(--accent)]/[0.02] blur-3xl" />
         <div className="absolute -right-24 bottom-1/4 h-[300px] w-[300px] rounded-full bg-[var(--primary)]/[0.02] blur-3xl" />
       </div>
@@ -131,7 +131,7 @@ export default function Research() {
           viewport={viewport}
           className="max-w-2xl"
         >
-          <Heading subtitle="Research" title="Academic work" />
+          <Heading id="research-heading" subtitle="Research" title="Academic work" />
           <p className="mt-4 text-base text-[var(--muted)] sm:text-lg">
             My research explores the intersection of natural language processing
             and real-world applications — focusing on making AI more accessible

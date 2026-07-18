@@ -24,7 +24,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative border-t border-[var(--border-light)] bg-[var(--surface)]">
+    <footer
+      role="contentinfo"
+      className="relative border-t border-[var(--border-light)] bg-[var(--surface)]"
+    >
       <Container>
         <div className="flex flex-col gap-10 py-12 sm:py-16">
           {/* Top row */}
@@ -89,6 +92,7 @@ export default function Footer() {
                         href={link.href}
                         target={link.href.startsWith("http") ? "_blank" : undefined}
                         rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        aria-label={link.label}
                         className="group flex items-center gap-1.5 text-sm text-[var(--muted)] transition-colors duration-200 hover:text-[var(--foreground)]"
                       >
                         {link.label}
@@ -111,16 +115,18 @@ export default function Footer() {
 
             <button
               onClick={scrollToTop}
+              aria-label="Back to top"
               className={cn(
                 "group flex items-center gap-2 text-xs font-medium text-[var(--muted)]",
                 "transition-colors duration-200 hover:text-[var(--foreground)]"
               )}
             >
               Back to top
-              <span className="flex size-7 items-center justify-center rounded-full border border-[var(--border)] bg-white transition-all duration-200 group-hover:border-[var(--primary)] group-hover:bg-[var(--primary-muted)]">
+                <span className="flex size-7 items-center justify-center rounded-full border border-[var(--border)] bg-white transition-all duration-200 group-hover:border-[var(--primary)] group-hover:bg-[var(--primary-muted)]">
                 <ArrowUp
                   className="size-3.5 text-[var(--muted)] transition-colors duration-200 group-hover:text-[var(--primary)]"
                   strokeWidth={2.5}
+                  aria-hidden="true"
                 />
               </span>
             </button>

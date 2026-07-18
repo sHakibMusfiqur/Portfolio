@@ -39,6 +39,7 @@ export default function HeroBackground() {
       variants={fadeRight}
       initial="hidden"
       animate="visible"
+      aria-hidden="true"
       className="relative hidden lg:flex lg:h-[520px] lg:items-center lg:justify-center"
     >
       {/* Glow backdrop */}
@@ -149,7 +150,7 @@ export default function HeroBackground() {
           className="absolute -right-4 top-8 z-20"
         >
           <div className="flex items-center gap-2.5 rounded-2xl border border-[var(--border-light)] bg-white/90 px-4 py-3 shadow-[var(--shadow-lg)] backdrop-blur-xl">
-            <span className="relative flex size-2.5">
+            <span className="relative flex size-2.5" aria-hidden="true">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-[var(--success)] opacity-75" />
               <span className="relative inline-flex size-2.5 rounded-full bg-[var(--success)]" />
             </span>

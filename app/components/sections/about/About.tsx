@@ -11,9 +11,9 @@ import ExperienceSummary from "./ExperienceSummary";
 
 export default function About() {
   return (
-    <Section id="about" className="relative overflow-hidden">
+    <Section id="about" aria-labelledby="about-heading" className="relative overflow-hidden">
       {/* Background accent */}
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute -right-32 top-0 h-[400px] w-[400px] rounded-full bg-[var(--primary)]/[0.02] blur-3xl" />
         <div className="absolute -left-24 bottom-0 h-[300px] w-[300px] rounded-full bg-[var(--accent)]/[0.02] blur-3xl" />
       </div>
@@ -26,7 +26,7 @@ export default function About() {
           whileInView="visible"
           viewport={viewport}
         >
-          <Heading subtitle="About Me" title="Who I am" />
+          <Heading id="about-heading" subtitle="About Me" title="Who I am" />
         </motion.div>
 
         {/* Two-column layout */}

@@ -40,9 +40,9 @@ const infoItems = [
 
 export default function Contact() {
   return (
-    <Section id="contact" className="relative overflow-hidden">
+    <Section id="contact" aria-labelledby="contact-heading" className="relative overflow-hidden">
       {/* Background accent */}
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute -right-40 bottom-0 h-[400px] w-[400px] rounded-full bg-[var(--primary)]/[0.02] blur-3xl" />
         <div className="absolute -left-24 top-1/3 h-[300px] w-[300px] rounded-full bg-[var(--accent)]/[0.02] blur-3xl" />
       </div>
@@ -56,7 +56,7 @@ export default function Contact() {
           viewport={viewport}
           className="max-w-2xl"
         >
-          <Heading subtitle="Contact" title="Get in touch" />
+          <Heading id="contact-heading" subtitle="Contact" title="Get in touch" />
           <p className="mt-4 text-base text-[var(--muted)] sm:text-lg">
             Have a project in mind, a question, or just want to connect?
             I&apos;d love to hear from you.

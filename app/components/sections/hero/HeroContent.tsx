@@ -15,7 +15,7 @@ export default function HeroContent() {
     >
       <motion.div variants={fadeUp}>
         <Badge>
-          <span className="relative flex size-2">
+          <span className="relative flex size-2" aria-hidden="true">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-[var(--primary)] opacity-75" />
             <span className="relative inline-flex size-2 rounded-full bg-[var(--primary)]" />
           </span>
@@ -28,7 +28,7 @@ export default function HeroContent() {
           Software Engineer
         </p>
 
-        <h1 className="text-5xl font-bold leading-[1.08] tracking-tight text-[var(--foreground)] sm:text-6xl lg:text-7xl">
+        <h1 id="hero-heading" className="text-5xl font-bold leading-[1.08] tracking-tight text-[var(--foreground)] sm:text-6xl lg:text-7xl">
           Building digital
           <br />
           experiences that{" "}
@@ -57,7 +57,7 @@ export default function HeroContent() {
           </span>
           <span>Musfiqur Shakib</span>
         </div>
-        <span className="hidden size-1 rounded-full bg-[var(--border)] sm:block" />
+          <span className="hidden size-1 rounded-full bg-[var(--border)] sm:block" aria-hidden="true" />
         <div className="flex items-center gap-1.5 text-sm text-[var(--muted)]">
           <span className="size-1.5 rounded-full bg-[var(--success)]" />
           Open to work

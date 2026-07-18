@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 
 interface HeadingProps {
+  id?: string;
   title: string;
   subtitle?: string;
   align?: "left" | "center";
@@ -8,6 +9,7 @@ interface HeadingProps {
 }
 
 export default function Heading({
+  id,
   title,
   subtitle,
   align = "left",
@@ -26,7 +28,7 @@ export default function Heading({
         </p>
       )}
 
-      <h2 className="text-3xl font-bold tracking-tight text-[var(--foreground)] sm:text-4xl md:text-5xl">
+      <h2 id={id} className="text-3xl font-bold tracking-tight text-[var(--foreground)] sm:text-4xl md:text-5xl">
         {title}
       </h2>
     </div>
