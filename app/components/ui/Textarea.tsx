@@ -1,13 +1,13 @@
-import { forwardRef, type InputHTMLAttributes } from "react";
+import { forwardRef, type TextareaHTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label: string;
   error?: string;
 }
 
-const Input = forwardRef<HTMLInputElement, InputProps>(
+const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ label, error, className, id, ...props }, ref) => {
     return (
       <div className="flex flex-col gap-1.5">
@@ -17,11 +17,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         >
           {label}
         </label>
-        <input
+        <textarea
           ref={ref}
           id={id}
           className={cn(
-            "rounded-xl border border-[var(--border)] bg-white px-4 py-2.5 text-sm text-[var(--foreground)]",
+            "min-h-[120px] rounded-xl border border-[var(--border)] bg-white px-4 py-2.5 text-sm text-[var(--foreground)]",
             "placeholder:text-[var(--muted-light)]",
             "transition-all duration-200",
             "focus:border-[var(--primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/10",
@@ -38,6 +38,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-Input.displayName = "Input";
+Textarea.displayName = "Textarea";
 
-export default Input;
+export default Textarea;
