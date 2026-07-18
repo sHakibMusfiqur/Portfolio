@@ -3,26 +3,12 @@
 import { motion } from "framer-motion";
 
 import Badge from "@/components/ui/Badge";
-import { cn } from "@/lib/utils";
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
-  },
-};
+import { fadeUp, staggerContainer } from "@/lib/animations";
 
 export default function HeroContent() {
   return (
     <motion.div
-      variants={stagger}
+      variants={staggerContainer(0.08)}
       initial="hidden"
       animate="visible"
       className="flex max-w-2xl flex-col items-start gap-6"

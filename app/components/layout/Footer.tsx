@@ -9,6 +9,7 @@ import Container from "@/components/ui/Container";
 import { NAV_LINKS } from "@/components/constants/navigation";
 import { CONTACT_INFO } from "@/components/constants/socials";
 import { cn } from "@/lib/utils";
+import { fadeUp, viewport } from "@/lib/animations";
 
 const socials = [
   { label: "LinkedIn", href: "https://linkedin.com/in/musfiqurshakib", icon: Globe },
@@ -16,11 +17,6 @@ const socials = [
   { label: "Email", href: `mailto:${CONTACT_INFO.email}`, icon: Mail },
   { label: "Telegram", href: "https://t.me/musfiqurshakib", icon: Send },
 ];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const } },
-};
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -38,7 +34,7 @@ export default function Footer() {
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={viewport}
               className="flex max-w-sm flex-col gap-3"
             >
               <Logo />
@@ -55,7 +51,7 @@ export default function Footer() {
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={viewport}
                 className="flex flex-col gap-3"
               >
                 <p className="text-xs font-semibold uppercase tracking-wider text-[var(--foreground-secondary)]">
@@ -80,7 +76,7 @@ export default function Footer() {
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true }}
+                viewport={viewport}
                 className="flex flex-col gap-3"
               >
                 <p className="text-xs font-semibold uppercase tracking-wider text-[var(--foreground-secondary)]">

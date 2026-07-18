@@ -5,12 +5,8 @@ import { motion } from "framer-motion";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
 import { SKILL_CATEGORIES } from "@/components/data/skills";
+import { fadeUp, viewport } from "@/lib/animations";
 import SkillCard from "./SkillCard";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
-};
 
 export default function Skills() {
   return (
@@ -26,7 +22,7 @@ export default function Skills() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={viewport}
           className="max-w-2xl"
         >
           <Heading subtitle="Skills" title="What I work with" />

@@ -7,13 +7,9 @@ import { ArrowRight } from "lucide-react";
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
 import { FEATURED_PROJECTS, PROJECTS } from "@/components/data/projects";
+import { fadeUp, viewport } from "@/lib/animations";
 import FeaturedProject from "./FeaturedProject";
 import ProjectCard from "./ProjectCard";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
-};
 
 export default function Projects() {
   return (
@@ -29,7 +25,7 @@ export default function Projects() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={viewport}
           className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"
         >
           <div className="max-w-2xl">

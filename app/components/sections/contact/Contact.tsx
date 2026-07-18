@@ -13,13 +13,9 @@ import {
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
 import { cn } from "@/lib/utils";
+import { fadeUp, viewport } from "@/lib/animations";
 import { SOCIAL_LINKS, CONTACT_INFO } from "@/components/constants/socials";
 import ContactForm from "./ContactForm";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
-};
 
 const infoItems = [
   {
@@ -57,7 +53,7 @@ export default function Contact() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={viewport}
           className="max-w-2xl"
         >
           <Heading subtitle="Contact" title="Get in touch" />
@@ -74,7 +70,7 @@ export default function Contact() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={viewport}
             className="flex flex-col gap-8"
           >
             {/* Contact details */}
@@ -181,7 +177,7 @@ export default function Contact() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={viewport}
           >
             <div className="rounded-3xl border border-[var(--border-light)] bg-white p-7 shadow-[var(--shadow-xs)] sm:p-8">
               <div className="mb-6">

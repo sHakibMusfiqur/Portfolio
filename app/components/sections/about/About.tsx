@@ -4,14 +4,10 @@ import { motion } from "framer-motion";
 
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
+import { fadeUp, viewport } from "@/lib/animations";
 import Biography from "./Biography";
 import Education from "./Education";
 import ExperienceSummary from "./ExperienceSummary";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
-};
 
 export default function About() {
   return (
@@ -28,7 +24,7 @@ export default function About() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={viewport}
         >
           <Heading subtitle="About Me" title="Who I am" />
         </motion.div>

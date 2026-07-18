@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+import { viewport } from "@/lib/animations";
 import type { SkillCategory } from "@/types/skill";
 
 interface SkillCardProps {
@@ -17,7 +18,7 @@ export default function SkillCard({ category, index }: SkillCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={viewport}
       transition={{
         duration: 0.45,
         delay: index * 0.06,

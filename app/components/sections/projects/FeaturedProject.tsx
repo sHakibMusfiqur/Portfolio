@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, GitFork, BookOpen, ArrowUpRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { viewport } from "@/lib/animations";
 import type { Project } from "@/types/project";
 
 interface FeaturedProjectProps {
@@ -23,7 +24,7 @@ export default function FeaturedProject({ project, index }: FeaturedProjectProps
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={viewport}
       transition={{
         duration: 0.5,
         delay: index * 0.1,

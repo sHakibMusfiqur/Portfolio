@@ -12,15 +12,7 @@ import {
   Zap,
 } from "lucide-react";
 
-const fadeRight = {
-  hidden: { opacity: 0, x: 30, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
-  },
-};
+import { fadeRight, spring } from "@/lib/animations";
 
 const float = (delay: number) => ({
   y: [0, -8, 0],
@@ -92,7 +84,7 @@ export default function HeroBackground() {
               <motion.div
                 key={tech.label}
                 whileHover={{ scale: 1.05, y: -2 }}
-                transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                transition={spring}
                 className="group flex flex-col items-center gap-2 rounded-2xl border border-[var(--border-light)] bg-white p-3 transition-all duration-200 hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-sm)]"
               >
                 <div

@@ -17,6 +17,7 @@ import {
 import Heading from "@/components/ui/Heading";
 import Section from "@/components/ui/Section";
 import { cn } from "@/lib/utils";
+import { fadeUp, staggerContainer, viewport } from "@/lib/animations";
 
 /* ─── Data ─── */
 
@@ -110,13 +111,6 @@ const typeConfig = {
   publication: { color: "#16a34a", bg: "bg-emerald-500/10" },
 };
 
-/* ─── Animation Variants ─── */
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
-};
-
 /* ─── Component ─── */
 
 export default function Research() {
@@ -134,7 +128,7 @@ export default function Research() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={viewport}
           className="max-w-2xl"
         >
           <Heading subtitle="Research" title="Academic work" />
@@ -150,7 +144,7 @@ export default function Research() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={viewport}
         >
           <div className="group relative overflow-hidden rounded-3xl border border-[var(--border-light)] bg-white p-8 transition-all duration-300 hover:border-[var(--border-focus)] hover:shadow-[var(--shadow-lg)] sm:p-10">
             {/* Accent strip */}
@@ -204,7 +198,7 @@ export default function Research() {
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={viewport}
           className="flex flex-col gap-5"
         >
           <div className="flex items-center gap-3">
@@ -252,7 +246,7 @@ export default function Research() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={viewport}
             className="flex flex-col gap-5"
           >
             <div className="flex items-center gap-3">
@@ -311,7 +305,7 @@ export default function Research() {
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={viewport}
             className="flex flex-col gap-5"
           >
             <div className="flex items-center gap-3">

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ExternalLink, GitFork, BookOpen, ArrowUpRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { viewport } from "@/lib/animations";
 import type { Project } from "@/types/project";
 
 interface ProjectCardProps {
@@ -23,7 +24,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={viewport}
       transition={{
         duration: 0.45,
         delay: index * 0.06,

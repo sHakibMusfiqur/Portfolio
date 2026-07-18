@@ -1,12 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, ArrowUpRight } from "lucide-react";
+import { Briefcase, Calendar } from "lucide-react";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
-};
+import { fadeUp, staggerContainer, viewport } from "@/lib/animations";
 
 const experiences = [
   {
@@ -30,10 +27,10 @@ const experiences = [
 export default function ExperienceSummary() {
   return (
     <motion.div
-      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.06 } } }}
+      variants={staggerContainer(0.06)}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={viewport}
       className="flex flex-col gap-5"
     >
       <motion.div variants={fadeUp} className="flex items-center gap-3">
@@ -49,7 +46,7 @@ export default function ExperienceSummary() {
         {/* Timeline line */}
         <div className="absolute left-[17px] top-10 bottom-4 w-px bg-[var(--border-light)]" />
 
-        {experiences.map((item, i) => (
+        {experiences.map((item) => (
           <motion.div
             key={item.role}
             variants={fadeUp}
