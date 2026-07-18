@@ -1,4 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/hero/Hero";
 import About from "@/components/sections/about/About";
 import Skills from "@/components/sections/skills/Skills";
@@ -19,6 +20,8 @@ export default function Home() {
         <Research />
         <Contact />
       </main>
+
+      <Footer />
     </>
   );
 }
