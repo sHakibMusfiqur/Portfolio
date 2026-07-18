@@ -77,7 +77,7 @@ export default function Navbar() {
       )}
       role="banner"
     >
-      <Container>
+      <Container className="max-w-[1180px]">
         {/* ── Desktop Nav — Floating Glass ── */}
         <nav
           id={desktopNavId}

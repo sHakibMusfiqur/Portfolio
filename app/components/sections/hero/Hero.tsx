@@ -12,7 +12,7 @@ export default function Hero() {
       <section
         id="hero"
         aria-labelledby="hero-heading"
-        className="relative flex min-h-[100dvh] items-center overflow-hidden"
+        className="relative min-h-[100dvh] overflow-hidden"
       >
         {/* Background effects */}
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -33,24 +33,29 @@ export default function Hero() {
           <div className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--primary)]/[0.02] blur-[150px]" />
         </div>
 
-        {/* Floating sidebar */}
-        <Sidebar />
+        {/* 3-column layout: Sidebar | Content | Visual */}
+        <Container className="relative z-10 flex h-[100dvh] items-center">
+          <div className="grid w-full grid-cols-[80px_1fr] items-center gap-0 lg:grid-cols-[80px_minmax(0,620px)_minmax(0,1fr)] lg:gap-4">
 
-        {/* Main content */}
-        <Container className="relative z-10 w-full py-32 lg:py-0">
-          <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-8 xl:pl-16">
-            {/* Left — Content */}
-            <div className="flex flex-col items-start">
+            {/* Column 1 — Sidebar */}
+            <div className="hidden lg:flex lg:justify-center">
+              <Sidebar />
+            </div>
+
+            {/* Column 2 — Left Content */}
+            <div className="flex flex-col items-start py-28 sm:py-32 lg:py-0">
               <HeroContent />
             </div>
 
-            {/* Right — Visual */}
-            <HeroBackground />
+            {/* Column 3 — Right Visual */}
+            <div className="hidden lg:flex lg:items-center lg:justify-end">
+              <HeroBackground />
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* GitHub Contributions — below hero */}
+      {/* GitHub Contributions — below hero, full width */}
       <GitHubContributions />
     </>
   );

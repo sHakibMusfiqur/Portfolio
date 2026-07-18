@@ -64,7 +64,7 @@ export default function Sidebar() {
       initial="hidden"
       animate="visible"
       aria-label="Side navigation"
-      className="fixed left-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-2 xl:flex"
+      className="flex flex-col items-center gap-2"
     >
       {/* Navigation icons */}
       <div className="flex flex-col items-center gap-1 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] p-2 backdrop-blur-2xl shadow-[var(--shadow-lg)]">

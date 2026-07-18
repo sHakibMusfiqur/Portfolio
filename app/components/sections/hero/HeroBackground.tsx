@@ -40,20 +40,20 @@ export default function HeroBackground() {
       initial="hidden"
       animate="visible"
       aria-hidden="true"
-      className="relative hidden h-[580px] lg:block xl:h-[620px]"
+      className="relative flex h-[520px] w-full max-w-[420px] flex-col justify-between"
     >
       {/* Glow backdrop */}
-      <div className="absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-[350px] w-[350px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--primary)]/[0.06] blur-[100px]" />
-        <div className="absolute right-0 top-1/4 h-[250px] w-[250px] rounded-full bg-[var(--primary)]/[0.04] blur-[80px]" />
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-1/3 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--primary)]/[0.06] blur-[100px]" />
+        <div className="absolute right-0 bottom-1/3 h-[200px] w-[200px] rounded-full bg-[var(--primary)]/[0.04] blur-[80px]" />
       </div>
 
-      {/* ── Code Editor Card ── */}
+      {/* ── Code Editor Card — Top ── */}
       <motion.div
         animate={float(0)}
-        className="absolute left-0 top-8 z-20 w-[380px]"
+        className="relative z-20 self-start"
       >
-        <div className="rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] shadow-[var(--shadow-xl)] backdrop-blur-2xl overflow-hidden">
+        <div className="w-[360px] rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] shadow-[var(--shadow-xl)] backdrop-blur-2xl overflow-hidden">
           {/* Title bar */}
           <div className="flex items-center justify-between border-b border-[var(--glass-border)] px-4 py-2.5">
             <div className="flex items-center gap-2">
@@ -103,10 +103,10 @@ export default function HeroBackground() {
         </div>
       </motion.div>
 
-      {/* ── Portrait Frame ── */}
+      {/* ── Portrait Frame — Bottom ── */}
       <motion.div
         animate={float(1.5)}
-        className="absolute bottom-8 right-0 z-10"
+        className="relative z-10 self-end"
       >
         <div className="relative">
           {/* Glow ring */}
@@ -114,7 +114,7 @@ export default function HeroBackground() {
 
           {/* Frame */}
           <div className="relative h-[280px] w-[220px] overflow-hidden rounded-3xl border border-[var(--glass-border)] bg-[var(--surface-sunken)] shadow-[var(--shadow-2xl)]">
-            {/* Empty portrait area — placeholder for user image */}
+            {/* Empty portrait area */}
             <div className="flex h-full w-full items-center justify-center">
               <div className="flex flex-col items-center gap-3">
                 <div className="flex size-14 items-center justify-center rounded-2xl bg-[var(--surface-overlay)]">
@@ -127,7 +127,7 @@ export default function HeroBackground() {
             </div>
           </div>
 
-          {/* ── Availability Badge (floating on portrait) ── */}
+          {/* ── Availability Badge — attached to portrait ── */}
           <motion.div
             animate={float(2.5)}
             className="absolute -left-6 bottom-6 z-30"
@@ -142,26 +142,6 @@ export default function HeroBackground() {
               </span>
             </div>
           </motion.div>
-        </div>
-      </motion.div>
-
-      {/* ── Stats floating card ── */}
-      <motion.div
-        animate={float(3)}
-        className="absolute bottom-32 left-8 z-30"
-      >
-        <div className="flex items-center gap-2.5 rounded-2xl border border-[var(--glass-border)] bg-[var(--glass)] px-4 py-3 shadow-[var(--shadow-lg)] backdrop-blur-2xl">
-          <div className="flex size-8 items-center justify-center rounded-xl bg-[var(--primary-muted)]">
-            <span className="text-xs font-bold text-[var(--primary)]">3+</span>
-          </div>
-          <div>
-            <p className="text-[11px] font-semibold text-[var(--foreground)]">
-              Years Exp.
-            </p>
-            <p className="text-[9px] text-[var(--muted)]">
-              Building products
-            </p>
-          </div>
         </div>
       </motion.div>
     </motion.div>
